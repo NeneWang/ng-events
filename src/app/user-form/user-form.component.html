@@ -1,0 +1,63 @@
+<div class="container m-1 p-4">
+  <div class="row">
+    <div class="">
+      <div class="user-form">
+        <h2>Add Student</h2>
+        <form [formGroup]="userForm" (ngSubmit)="onSubmit()">
+          <div class="form-group">
+            <label for="name">Name*</label>
+            <input type="text" id="name" formControlName="name" class="form-control" />
+            <div *ngIf="userForm.get('name')!.hasError('required') && userForm.get('name')!.touched" class="text-danger">
+              Name is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="name">Last name*</label>
+            <input type="text" id="lastname" formControlName="lastname" class="form-control" />
+            <div *ngIf="userForm.get('lastname')!.hasError('required') && userForm.get('lastname')!.touched" class="text-danger">
+              Last name is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="major">Major*</label>
+            <select id="major" formControlName="major" class="form-control">
+              <option value="">Select a major</option>
+              <option *ngFor="let major of majors" [value]="major">{{ major }}</option>
+            </select>
+            <div *ngIf="userForm.get('major')!.hasError('required') && userForm.get('major')!.touched" class="text-danger">
+              Major is required
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="average">Average</label>
+            <input type="number" id="average" formControlName="average" class="form-control" />
+            <div *ngIf="userForm.get('average')!.errors" class="alert alert-danger">
+              <div *ngIf="userForm.get('average')!.hasError('required')">
+                Average is required
+              </div>
+              <div *ngIf="userForm.get('average')!.hasError('max')">
+                Average must be less than 10
+              </div>
+              <div *ngIf="userForm.get('average')!.hasError('min')">
+                Average must be greater than 0
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="minor">Minor</label>
+            <input type="text" id="minor" formControlName="minor" class="form-control" />
+            <div *ngIf="userForm.get('minor')!.hasError('minlength')" class="alert alert-danger">
+              Minor must be at least 3 characters long
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="credits">Credits</label>
+            <input type="number" id="credits" formControlName="credits" class="form-control" />
+          </div>
+          <button type="submit" [disabled]="userForm.invalid" class="btn mt-4 btn-primary">Submit</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

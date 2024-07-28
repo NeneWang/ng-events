@@ -1,0 +1,69 @@
+<div class="container m-1 p-4">
+  <div class="row">
+    <div class="user-form">
+      <h2>Add Course</h2>
+      <form [formGroup]="courseForm" (ngSubmit)="onsubmit()">
+        <div class="form-group">
+          <label for="name">Name*</label>
+          <input
+            type="text"
+            id="name"
+            formControlName="name"
+            class="form-control"
+          />
+          <div
+            *ngIf="
+              courseForm.get('name')!.hasError('required') &&
+              courseForm.get('name')!.touched
+            "
+            class="text-danger"
+          >
+            Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+            <label for="major">Major*</label>
+            <select id="major" formControlName="major" class="form-control">
+              <option value="">Select a major</option>
+              <option *ngFor="let major of majors" [value]="major">{{ major }}</option>
+            </select>
+            <div *ngIf="courseForm.get('major')!.hasError('required') && courseForm.get('name')!.touched" class="text-danger">
+              Major is required
+            </div>
+          </div>
+
+        <div class="form-group">
+          <label for="course_number">course_number*</label>
+          <input
+            type="string"
+            id="course_number"
+            formControlName="course_number"
+            class="form-control"
+          />
+          <div
+            *ngIf="courseForm.get('course_number')!.errors && courseForm.get('course_number')!.touched"
+            class="alert alert-danger"
+          >
+            <div *ngIf="courseForm.get('course_number')!.hasError('required')">
+              Course Number is required
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="credits">Credits</label>
+            <input
+              type="number"
+              id="credits"
+              formControlName="credits"
+              class="form-control"
+            />
+          </div>
+          <button type="submit" [disabled]="courseForm.invalid" class="btn mt-4 btn-primary">Submit</button>
+        
+
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

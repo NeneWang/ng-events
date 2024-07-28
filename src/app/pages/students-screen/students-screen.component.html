@@ -1,0 +1,20 @@
+<app-user-form
+(studentChange)="onStudentAdded($event)"
+></app-user-form>
+<!-- 
+<app-student-list-obs>
+
+</app-student-list-obs>
+<app-student-list-subs></app-student-list-subs> -->
+
+ <!-- <pre>
+  {{ students | json }}
+  
+</pre> -->
+
+<app-student-list
+  #studentList
+  [students]="students"
+  (editStudentEvent)="editStudent($event, 1)"
+  (deleteStudentEvent)="onDeleteStudent($event)"
+></app-student-list> 

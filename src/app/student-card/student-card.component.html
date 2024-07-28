@@ -1,0 +1,14 @@
+<div class="card pt-3">
+    <div class="card-header">
+      {{ student.name }}
+    </div>
+    <div class="card-body">
+      <p class="card-text" [ngClass]="{'text-success': numericAverage > 8, 'text-danger': numericAverage <= 8 }">Average: {{ student.average }}</p>
+      <p class="card-text">Major: {{ student.major }}</p>
+
+      <p *ngIf="student.minor" class="card-text">Minor: {{ student.minor }}</p>
+      <p *ngIf="student.average !== 0" class="card-text">Credits: {{ student.credits }}  </p>
+      <p>Seniority: {{student.credits | academicStatus}}</p>
+    </div>
+  </div>
+  

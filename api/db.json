@@ -1,0 +1,102 @@
+{
+  "users": [
+    {
+      "name": "admin",
+      "lastName": "admin",
+      "email": "admin@mail.com",
+      "password": "123456",
+      "token": "jgfdsSfvcdskjdsfDSF435324ikdsad",
+      "role": "ADMIN",
+      "id": 1
+    }
+  ],
+  "courses": [
+    {
+      "name": "Introduction to Computer Science",
+      "major": "Computer Science",
+      "course_number": "CS101",
+      "credits": 4,
+      "description": "This course introduces students to the fundamentals of computer science and programming."
+    },
+    {
+      "name": "Introduction to Biology",
+      "major": "Biology",
+      "course_number": "BIO101",
+      "credits": 4,
+      "description": "This course introduces students to the fundamentals of biology and the scientific method."
+    }
+  ],
+  "students": [
+    {
+      "name": "Frederik",
+      "lastname": "Hettinger",
+      "average": 12,
+      "minor": "District Division Developer",
+      "credits": 59,
+      "major": "Corporate Communications Assistant",
+      "id": 1
+    },
+    {
+      "name": "Therese",
+      "lastname": "Koepp",
+      "average": 98,
+      "minor": "Future Markets Representative",
+      "credits": 81,
+      "major": "Product Intranet Representative",
+      "id": 2
+    },
+    {
+      "name": "Novella",
+      "lastname": "Rogahn",
+      "average": 17,
+      "minor": "Dynamic Operations Officer",
+      "credits": 60,
+      "major": "International Brand Technician",
+      "id": 3
+    },
+    {
+      "name": "Freida",
+      "lastname": "Davis",
+      "average": 17,
+      "minor": "District Accounts Liaison",
+      "credits": 28,
+      "major": "Human Directives Technician",
+      "id": 4
+    },
+    {
+      "name": "Gisselle",
+      "lastname": "Orn",
+      "average": 79,
+      "minor": "Principal Integration Analyst",
+      "credits": 29,
+      "major": "Central Configuration Producer",
+      "id": 5
+    }
+  ],
+  "majors": [
+    {
+      "name": "Computer Science",
+      "id": 1
+    },
+    {
+      "name": "Biology",
+      "id": 2
+    },
+    {
+      "name": "Electrical Engineering",
+      "id": 3
+    },
+    {
+      "name": "Mechanical Engineering",
+      "id": 4
+    },
+    {
+      "name": "History",
+      "id": 5
+    },
+    {
+      "name": "Mathematics",
+      "id": 6
+    }
+  ]
+}
