@@ -1,3 +1,10 @@
+
+
+
+
+Angular.json with the pink blueberry theme
+
+```json
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
@@ -31,6 +38,7 @@
             ],
             "styles": [
               "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -94,6 +102,7 @@
               "src/assets"
             ],
             "styles": [
+              "@angular/material/prebuilt-themes/pink-bluegrey.css",
               "src/styles.scss"
             ],
             "scripts": []
@@ -118,3 +127,7 @@
     "analytics": "e9a5114a-a089-4383-9ede-2f68be545f94"
   }
 }
+```
+
+
+

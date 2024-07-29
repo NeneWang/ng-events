@@ -5,6 +5,7 @@ import { AboutScreenComponent } from './pages/about-screen/about-screen.componen
 import { StudentsScreenComponent } from './pages/students-screen/students-screen.component';
 import { CoursesScreenComponent } from './pages/courses-screen/courses-screen.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
+import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component';
 
 
 const routes: Routes = [
@@ -25,6 +26,9 @@ const routes: Routes = [
   },
   {
     path: 'auth', loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
+  },
+  {
+    path: 'browse', component: BrowseScreenComponent
   }
 ];
 

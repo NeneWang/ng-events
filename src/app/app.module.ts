@@ -15,8 +15,11 @@ import { CoreModule } from './core/core.module';
 import { LoginComponent } from './pages/login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
-import { EventsScreenComponent } from './pages/events-screen/events-screen.component'; 
+import { EventsScreenComponent } from './pages/events-screen/events-screen.component';
+import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component'; 
 
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from "@angular/material/form-field";
 
 
 @NgModule({
@@ -26,8 +29,11 @@ import { EventsScreenComponent } from './pages/events-screen/events-screen.compo
     SidebarComponent,
     LoginComponent,
     EventsScreenComponent,
+    BrowseScreenComponent,
   ],
   imports: [
+    MatInputModule,
+    MatFormFieldModule,
     BrowserModule,
     AppRoutingModule,
     NgbModule,

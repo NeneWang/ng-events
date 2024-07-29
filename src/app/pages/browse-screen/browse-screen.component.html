@@ -1,0 +1,16 @@
+<div>
+    <mat-toolbar color="primary">
+      <mat-form-field appearance="outline" class="search-box">
+        <mat-icon matPrefix>search</mat-icon>
+        <input matInput placeholder="Search for Titles or Creators" (keyup)="onSearch($event)">
+      </mat-form-field>
+    </mat-toolbar>
+  
+    <div class="items-list">
+      <div *ngFor="let item of filteredItems" class="item">
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.creator }}</p>
+      </div>
+    </div>
+  </div>
+  
