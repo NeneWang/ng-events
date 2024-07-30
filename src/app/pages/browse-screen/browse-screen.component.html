@@ -1,16 +1,29 @@
 <div>
-    <mat-toolbar color="primary">
-      <mat-form-field appearance="outline" class="search-box">
-        <mat-icon matPrefix>search</mat-icon>
-        <input matInput placeholder="Search for Titles or Creators" (keyup)="onSearch($event)">
-      </mat-form-field>
-    </mat-toolbar>
-  
-    <div class="items-list">
-      <div *ngFor="let item of filteredItems" class="item">
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.creator }}</p>
-      </div>
+  <div class="tags-list">
+    <div
+      *ngFor="let tag of tags"
+      (click)="toggleTag(tag)"
+      (keydown)="onTagKeydown($event, tag)"
+      [class.selected]="selectedTags.includes(tag)"
+      tabindex="0"
+      role="button"
+    >
+      {{ tag }}
     </div>
   </div>
+
+
+  <div class="items-list">
+    <mat-card *ngFor="let item of filteredItems" class="item">
+      <img mat-card-image [src]="item.image" alt="{{ item.title }}" />
+      <mat-card-content>
+        <h3>{{ item.title }}</h3>
+        <p>{{ item.creator }}</p>
+        <mat-chip-set aria-label="Fish selection">
+          <mat-chip *ngFor="let tag of item.tags" class="mat-mdc-chip">{{ tag }}</mat-chip>
+        </mat-chip-set>
+      </mat-card-content>
+    </mat-card>
+  </div>
   
+</div>

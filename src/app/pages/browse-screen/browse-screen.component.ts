@@ -8,17 +8,21 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class BrowseScreenComponent implements OnInit {
   items = [
-    { title: 'Event 1', creator: 'Creator A' },
-    { title: 'Event 2', creator: 'Creator B' },
-    { title: 'Vlog 1', creator: 'Creator C' },
-    { title: 'Shrine 1', creator: 'Creator D' },
-    { title: 'Shrine 2', creator: 'Creator E' },
+    { title: 'Event 1', creator: 'Creator A', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'] },
+    { title: 'Event 2', creator: 'Creator B', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'] },
+    { title: 'Vlog 1', creator: 'Creator C', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['music'] },
+    { title: 'Shrine 1', creator: 'Creator D', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'] },
+    { title: 'Shrine 2', creator: 'Creator E', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'] },
   ];
+
+  selectedTags: string[] = [];
+
+  tags = ['event', 'music'];
 
   filteredItems = this.items;
   searchTerm = '';
 
-  constructor(private route: ActivatedRoute) {}
+  constructor(private route: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.route.queryParams.subscribe(params => {
@@ -29,7 +33,7 @@ export class BrowseScreenComponent implements OnInit {
     });
   }
 
-  
+
   onSearch(event: Event): void {
     const inputElement = event.target as HTMLInputElement;
     this.searchTerm = inputElement.value.toLowerCase();
@@ -37,11 +41,39 @@ export class BrowseScreenComponent implements OnInit {
   }
 
   filterItems(searchTerm: string): void {
-    this.filteredItems = this.items.filter(item => 
-      item.title.toLowerCase().includes(searchTerm) || 
+    this.filteredItems = this.items.filter(item =>
+      item.title.toLowerCase().includes(searchTerm) ||
       item.creator.toLowerCase().includes(searchTerm)
     );
   }
 
-  
+  toggleTag(tag: string): void {
+    const index = this.selectedTags.indexOf(tag);
+    if (index === -1) {
+      this.selectedTags.push(tag);
+    } else {
+      this.selectedTags.splice(index, 1);
+    }
+    this.filterByTags(this.selectedTags);
+  }
+
+  filterByTags(tags: string[]): void {
+    if (tags.length === 0) {
+      this.filteredItems = this.items;
+      return;
+    }
+    this.filteredItems = this.items.filter(item =>
+      item.tags.some(tag => tags.includes(tag))
+    );
+  }
+
+
+  onTagKeydown(event: KeyboardEvent, tag: string): void {
+    if (event.key === 'Enter' || event.key === ' ') {
+      event.preventDefault();
+      this.toggleTag(tag);
+    }
+  }
+
+
 }

@@ -16,10 +16,13 @@ import { LoginComponent } from './pages/login/login.component';
 
 import { HttpClientModule } from '@angular/common/http';
 import { EventsScreenComponent } from './pages/events-screen/events-screen.component';
-import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component'; 
+import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component';
 
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatCardModule } from '@angular/material/card';
+import { MatChipsModule } from '@angular/material/chips';
+import {MatGridListModule} from '@angular/material/grid-list';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     SharedModule,
     CoreModule,
     StudentManagementModule,
-    HttpClientModule
+    HttpClientModule,
+    MatCardModule,
+    MatChipsModule,
+    MatGridListModule
   ],
   providers: [],
   bootstrap: [AppComponent]
