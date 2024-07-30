@@ -6,10 +6,12 @@ import { StudentsScreenComponent } from './pages/students-screen/students-screen
 import { CoursesScreenComponent } from './pages/courses-screen/courses-screen.component';
 import { HomeScreenComponent } from './pages/home-screen/home-screen.component';
 import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component';
+import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
 
 
 const routes: Routes = [
-  { path: '', component: HomeScreenComponent },
+  // { path: '', component: HomeScreenComponent },
+  {path: '', component: ExploreScreenComponent},
   {
     path: 'students', component: StudentsScreenComponent,
     children: [

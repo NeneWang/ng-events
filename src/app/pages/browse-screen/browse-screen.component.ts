@@ -17,7 +17,8 @@ export class BrowseScreenComponent implements OnInit {
 
   selectedTags: string[] = [];
 
-  tags = ['event', 'music'];
+  tags_initial = ['event', 'music'];
+  tags = this.tags_initial;
 
   filteredItems = this.items;
   searchTerm = '';
@@ -31,6 +32,20 @@ export class BrowseScreenComponent implements OnInit {
         this.filterItems(this.searchTerm);
       }
     });
+  }
+
+
+  searchTags(event: Event): void {
+    const inputElement = event.target as HTMLInputElement;
+    const tagsSearch = inputElement.value;
+    // Filter tags
+    if(tagsSearch === ''){
+      this.tags = this.tags_initial;
+      return;
+    }
+    this.tags = this.tags.filter(tag =>
+      tag.toLowerCase().includes(tagsSearch.toLowerCase())
+    );
   }
 
 

@@ -2,6 +2,29 @@
 
 /* Importing Bootstrap SCSS file. */
 @import 'bootstrap/scss/bootstrap';
+// @import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap');
 
-html, body { height: 100%; }
+// <link rel="preconnect" href="https://fonts.googleapis.com">
+// <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+// <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
+
+html, body { height: 100%; 
+
+  font-family: 'Roboto Mono', monospace !important;
+
+
+
+}
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+
+.center-placeholder {
+    text-align: center;
+  }
+  
+  /* Additional styles for the input */
+  .center-placeholder::placeholder {
+    text-align: center; /* Center the placeholder text */
+  }
+  

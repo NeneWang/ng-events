@@ -23,6 +23,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
+import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
+import { ContentBlocComponent } from './components/content-bloc/content-bloc.component';
 
 
 @NgModule({
@@ -33,6 +35,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     LoginComponent,
     EventsScreenComponent,
     BrowseScreenComponent,
+    ExploreScreenComponent,
+    ContentBlocComponent,
   ],
   imports: [
     MatInputModule,

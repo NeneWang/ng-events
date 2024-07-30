@@ -1,13 +1,8 @@
 <mat-sidenav-container>
-
-  <br>
-  <br>
+  <br />
+  <br />
   <mat-sidenav *ngIf="isLoggedIn()" mode="side" opened>
-    <!-- <mat-toolbar>
-      <button mat-button routerLink="/" style="margin-left: -1.5em !important">
-        <span appFont20>Admin</span>
-      </button>
-    </mat-toolbar> -->
+
     <mat-nav-list>
       <!-- Navbrand -->
       <a mat-line routerLink="/students">Manage Students</a>
@@ -20,20 +15,28 @@
 
   <mat-sidenav-content>
     <mat-toolbar color="primary">
+      <mat-nav-list>
+        <a mat-line routerLink="/">Home</a>
+      </mat-nav-list>
+
       <button mat-button>Events</button>
       <button mat-button>Vlogs</button>
       <button mat-button>Shrines</button>
 
       <button mat-button routerLink="/about">About</button>
 
-
-      <input matInput placeholder="Search for Titles or Creators" (keyup)="onSearch($event)">
+      <input
+        matInput
+        class="center-placeholder"
+        placeholder="Titles or Creators"
+        (keyup)="onSearch($event)"
+      />
       <span class="flex-spacer"></span>
       <button *ngIf="!isLoggedIn()" mat-button routerLink="/auth/login">
         Login
       </button>
       <div *ngIf="isLoggedIn()">
-        <span>{{getAuthName()}}</span>
+        <span>{{ getAuthName() }}</span>
         <button mat-button routerLink="/auth/logout" (click)="logout()">
           Logout
         </button>

@@ -1,0 +1,18 @@
+.favorite-artists {
+    display: flex;
+    align-items: center;
+    font-family: 'Roboto Mono', monospace; /* Ensure the font is applied */
+  }
+  
+  .separated-icon {
+    font-size: 24px;
+    margin-right: 8px; /* Adjust the spacing between the icon and text */
+  }
+  
+  .favorite-artists p {
+    margin: 0;
+    font-size: 16px;
+  }
+  
+
+  
