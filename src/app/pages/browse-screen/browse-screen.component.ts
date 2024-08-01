@@ -7,20 +7,35 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./browse-screen.component.scss']
 })
 export class BrowseScreenComponent implements OnInit {
-  items = [
-    { title: 'Event 1', creator: 'Creator A', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'] },
-    { title: 'Event 2', creator: 'Creator B', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'] },
-    { title: 'Vlog 1', creator: 'Creator C', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['music'] },
-    { title: 'Shrine 1', creator: 'Creator D', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'] },
-    { title: 'Shrine 2', creator: 'Creator E', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'] },
+  initial_items = [
+    {
+      title: 'Event 1', creator: 'Creator A', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'],
+      description: "Greetings and salutations! It is time for the third installment of POTBRR Devlogs! We’re happy to report that we’ve reached over 6,000 downloads of Act 1! Thank you all so much for your support! We’re hard at work on Act 2, and we’re excited to share some of our progress with you. We’ve been working on a lot of new features, including new characters, new locations, and new music"
+    },
+    {
+      title: 'Event 2', creator: 'Creator B', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event', 'music'],
+      description: "Greetings and salutations! It is time for the third installment of POTBRR Devlogs! We’re happy to report that we’ve reached over 6,000 downloads of Act 1! Thank you all so much for your support! We’re hard at work on Act 2, and we’re excited to share some of our progress with you. We’ve been working on a lot of new features, including new characters, new locations, and new music"
+    },
+    {
+      title: 'Vlog 1', creator: 'Creator C', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['music'],
+      description: "Greetings and salutations! It is time for the third installment of POTBRR Devlogs! We’re happy to report that we’ve reached over 6,000 downloads of Act 1! Thank you all so much for your support! We’re hard at work on Act 2, and we’re excited to share some of our progress with you. We’ve been working on a lot of new features, including new characters, new locations, and new music"
+    },
+    {
+      title: 'Shrine 1', creator: 'Creator D', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'],
+      description: "Greetings and salutations! It is time for the third installment of POTBRR Devlogs! We’re happy to report that we’ve reached over 6,000 downloads of Act 1! Thank you all so much for your support! We’re hard at work on Act 2, and we’re excited to share some of our progress with you. We’ve been working on a lot of new features, including new characters, new locations, and new music"
+    },
+    {
+      title: 'Shrine 2', creator: 'Creator E', image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png', tags: ['event'],
+      description: "Greetings and salutations! It is time for the third installment of POTBRR Devlogs! We’re happy to report that we’ve reached over 6,000 downloads of Act 1! Thank you all so much for your support! We’re hard at work on Act 2, and we’re excited to share some of our progress with you. We’ve been working on a lot of new features, including new characters, new locations, and new music"
+    },
   ];
 
+  tags_initial = ['event', 'music'];
   selectedTags: string[] = [];
 
-  tags_initial = ['event', 'music'];
   tags = this.tags_initial;
 
-  filteredItems = this.items;
+  filteredItems = this.initial_items;
   searchTerm = '';
 
   constructor(private route: ActivatedRoute) { }
@@ -30,7 +45,10 @@ export class BrowseScreenComponent implements OnInit {
       if (params['q']) {
         this.searchTerm = params['q'];
         this.filterItems(this.searchTerm);
+      } else {
+        this.filteredItems = this.initial_items;
       }
+
     });
   }
 
@@ -39,7 +57,7 @@ export class BrowseScreenComponent implements OnInit {
     const inputElement = event.target as HTMLInputElement;
     const tagsSearch = inputElement.value;
     // Filter tags
-    if(tagsSearch === ''){
+    if (tagsSearch === '') {
       this.tags = this.tags_initial;
       return;
     }
@@ -56,38 +74,14 @@ export class BrowseScreenComponent implements OnInit {
   }
 
   filterItems(searchTerm: string): void {
-    this.filteredItems = this.items.filter(item =>
+    if (searchTerm === '') {
+      this.filteredItems = this.initial_items;
+      return;
+    }
+    this.filteredItems = this.initial_items.filter(item =>
       item.title.toLowerCase().includes(searchTerm) ||
       item.creator.toLowerCase().includes(searchTerm)
     );
-  }
-
-  toggleTag(tag: string): void {
-    const index = this.selectedTags.indexOf(tag);
-    if (index === -1) {
-      this.selectedTags.push(tag);
-    } else {
-      this.selectedTags.splice(index, 1);
-    }
-    this.filterByTags(this.selectedTags);
-  }
-
-  filterByTags(tags: string[]): void {
-    if (tags.length === 0) {
-      this.filteredItems = this.items;
-      return;
-    }
-    this.filteredItems = this.items.filter(item =>
-      item.tags.some(tag => tags.includes(tag))
-    );
-  }
-
-
-  onTagKeydown(event: KeyboardEvent, tag: string): void {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      this.toggleTag(tag);
-    }
   }
 
 

@@ -20,7 +20,7 @@
       </mat-nav-list>
 
       <button mat-button>Events</button>
-      <button mat-button>Vlogs</button>
+      <button mat-button routerLink="/vlog" >Vlogs</button>
       <button mat-button>Shrines</button>
 
       <button mat-button routerLink="/about">About</button>
@@ -29,7 +29,7 @@
         matInput
         class="center-placeholder"
         placeholder="Titles or Creators"
-        (keyup)="onSearch($event)"
+        (keydown)="onSearch($event)"
       />
       <span class="flex-spacer"></span>
       <button *ngIf="!isLoggedIn()" mat-button routerLink="/auth/login">

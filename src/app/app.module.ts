@@ -25,6 +25,8 @@ import { MatChipsModule } from '@angular/material/chips';
 import {MatGridListModule} from '@angular/material/grid-list';
 import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
 import { ContentBlocComponent } from './components/content-bloc/content-bloc.component';
+import { WordLimitPipe } from './word-limit.pipe';
+import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.component';
 
 
 @NgModule({
@@ -37,6 +39,8 @@ import { ContentBlocComponent } from './components/content-bloc/content-bloc.com
     BrowseScreenComponent,
     ExploreScreenComponent,
     ContentBlocComponent,
+    WordLimitPipe,
+    VlogsScreenComponent,
   ],
   imports: [
     MatInputModule,

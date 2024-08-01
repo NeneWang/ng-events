@@ -1,42 +1,4 @@
 <div class="explore-container">
-  <p>Explore artworks and Web Shrines:</p>
-  <div class="search-tags favorite-artists">
-    <mat-icon class="separated-icon">label_outline</mat-icon>
-    <input
-      matInput
-      placeholder="Search Tags"
-      class="center-placeholder"
-      (keyup)="searchTags($event)"
-    />
-  </div>
-</div>
+  <app-content-bloc [initialItems]="filteredItems" [initialTags]="tags_initial"></app-content-bloc>
 
-<div>
-  <div class="tags-list">
-    <div
-      *ngFor="let tag of tags"
-      (click)="toggleTag(tag)"
-      (keydown)="onTagKeydown($event, tag)"
-      [class.selected]="selectedTags.includes(tag)"
-      tabindex="0"
-      role="button"
-    >
-      {{ tag }}
-    </div>
-  </div>
-
-  <div class="items-list">
-    <mat-card *ngFor="let item of filteredItems" class="item">
-      <img mat-card-image [src]="item.image" alt="{{ item.title }}" />
-      <mat-card-content>
-        <h3>{{ item.title }}</h3>
-        <p>{{ item.creator }}</p>
-        <mat-chip-set aria-label="Fish selection">
-          <mat-chip *ngFor="let tag of item.tags" class="mat-mdc-chip">{{
-            tag
-          }}</mat-chip>
-        </mat-chip-set>
-      </mat-card-content>
-    </mat-card>
-  </div>
 </div>

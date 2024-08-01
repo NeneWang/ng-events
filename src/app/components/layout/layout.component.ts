@@ -11,7 +11,7 @@ export class LayoutComponent {
 
 
   // Is user logged in?
-  
+
   constructor(private authService: AuthService, private router: Router) {
 
   }
@@ -20,7 +20,7 @@ export class LayoutComponent {
     return this.authService.isAuthenticatedUser();
   }
 
-  getAuthName(): string{
+  getAuthName(): string {
     return this.authService.getAuthUserData().name;
   }
 
@@ -28,10 +28,19 @@ export class LayoutComponent {
     this.authService.logout()
   }
   onSearch(event: Event): void {
+
+
     const inputElement = event.target as HTMLInputElement;
-    const searchTerm = inputElement.value;
-    this.router.navigate(['/browse'], { queryParams: { q: searchTerm } });
-    
+    const searchTerm = inputElement.value.toLowerCase();
+
+    if (searchTerm === '') {
+      this.router.navigate(['/'])
+      
+    } else {
+
+      this.router.navigate(['/browse'], { queryParams: { q: searchTerm } });
+    }
+
   }
-  
+
 }

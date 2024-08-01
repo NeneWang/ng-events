@@ -2,16 +2,12 @@
 
 <div class="explore-container">
   <p>Explore artworks and Web Shrines:</p>
-  <div class="search-tags favorite-artists">
-    <mat-icon class="separated-icon">label_outline</mat-icon>
-    <input
-      matInput
-      placeholder="Search Tags"
-      class="center-placeholder"
-      (keyup)="searchTags($event)"
-    />
-  </div>
 </div>
+
+<app-content-bloc
+  [initialItems]="initial_items"
+  [initialTags]="tags_initial"
+></app-content-bloc>
 
 <br />
 
@@ -19,3 +15,8 @@
   <mat-icon class="separated-icon">favorite_border</mat-icon>
   <p>By your Favorite Artists</p>
 </div>
+
+<app-content-bloc
+  [initialItems]="favoritedArtistItems"
+  [initialTags]="[]"
+></app-content-bloc>
