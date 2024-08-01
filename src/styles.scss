@@ -9,22 +9,59 @@
 // <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 // <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100..700;1,100..700&display=swap" rel="stylesheet">
 
-html, body { height: 100%; 
+html,
+body {
+  height: 100%;
 
   font-family: 'Roboto Mono', monospace !important;
 
 
 
 }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+body {
+  margin: 0;
+  font-family: Roboto, "Helvetica Neue", sans-serif;
+}
 
 
 .center-placeholder {
-    text-align: center;
-  }
-  
-  /* Additional styles for the input */
-  .center-placeholder::placeholder {
-    text-align: center; /* Center the placeholder text */
-  }
-  
+  text-align: center;
+}
+
+/* Additional styles for the input */
+.center-placeholder::placeholder {
+  text-align: center;
+  /* Center the placeholder text */
+}
+
+.button-container {
+  text-align: right;
+}
+
+
+
+.btn-action {
+
+  border: 1px solid black;
+  border-bottom: 2px solid black;
+  background: white;
+  /* Border around the button */
+  border-radius: 10px;
+  /* Rounded corners */
+  padding: 10px 20px;
+  /* Padding for the button */
+  font-size: 16px;
+  /* Font size */
+  text-transform: none;
+  /* Prevent text from being transformed to uppercase */
+  box-shadow: none;
+  /* Remove shadow */
+
+
+}
+
+.btn-action:hover {
+  background: #f8f9fa;
+  /* Change the background color on hover */
+}

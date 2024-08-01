@@ -34,7 +34,7 @@ const routes: Routes = [
     path: 'browse', component: BrowseScreenComponent
   },
   {
-    path: '/vlog', component: VlogsScreenComponent
+    path: 'vlog', component: VlogsScreenComponent
   }
 ];
 
