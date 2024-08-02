@@ -1,1 +1,23 @@
-<p>events-screen works!</p>
+<div class="button-container">
+  <button class="btn-action">Host Showcase</button>
+</div>
+<br />
+<p>
+  This is a place for hosting and participating on Online Art Shows, Anyone can
+  instantly get to an event for free.
+</p>
+
+<div id="chart">
+    <!-- <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [title]="chartOptions.title"></apx-chart> -->
+    <apx-chart
+    [series]="chartOptions.series"
+    [chart]="chartOptions.chart"
+    [fill]="chartOptions.fill"
+    [grid]="chartOptions.grid"
+    [dataLabels]="chartOptions.dataLabels"
+    [plotOptions]="chartOptions.plotOptions"
+    [xaxis]="chartOptions.xaxis"
+    [yaxis]="chartOptions.yaxis"
+  ></apx-chart>
+  
+</div>

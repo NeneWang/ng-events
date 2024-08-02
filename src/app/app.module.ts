@@ -29,6 +29,7 @@ import { WordLimitPipe } from './word-limit.pipe';
 import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.component';
 import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { NgApexchartsModule } from "ng-apexcharts";
 
 
 @NgModule({
@@ -58,7 +59,8 @@ import { ProfileComponent } from './pages/profile/profile.component';
     HttpClientModule,
     MatCardModule,
     MatChipsModule,
-    MatGridListModule
+    MatGridListModule,
+    NgApexchartsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

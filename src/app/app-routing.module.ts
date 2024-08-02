@@ -10,6 +10,7 @@ import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.co
 import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.component';
 import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.component';
 import { ProfileComponent } from './pages/profile/profile.component';
+import { EventsScreenComponent } from './pages/events-screen/events-screen.component';
 
 
 const routes: Routes = [
@@ -41,7 +42,10 @@ const routes: Routes = [
   {
     path: 'shrine', component: ShrinesScreenComponent
   },
-  { path: 'profile/:username', component: ProfileComponent }
+  { path: 'profile/:username', component: ProfileComponent },
+  {
+    path: 'event', component: EventsScreenComponent
+  }
 ];
 
 
