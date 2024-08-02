@@ -8,6 +8,7 @@ import { CoursesScreenComponent } from './pages/courses-screen/courses-screen.co
 import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.component';
 import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
 import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.component';
+import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.component';
 
 
 const routes: Routes = [
@@ -35,6 +36,9 @@ const routes: Routes = [
   },
   {
     path: 'vlog', component: VlogsScreenComponent
+  },
+  {
+    path: 'shrine', component: ShrinesScreenComponent
   }
 ];
 
