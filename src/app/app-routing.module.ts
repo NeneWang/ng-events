@@ -9,6 +9,7 @@ import { BrowseScreenComponent } from './pages/browse-screen/browse-screen.compo
 import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
 import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.component';
 import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 
 const routes: Routes = [
@@ -39,7 +40,8 @@ const routes: Routes = [
   },
   {
     path: 'shrine', component: ShrinesScreenComponent
-  }
+  },
+  { path: 'profile/:username', component: ProfileComponent }
 ];
 
 

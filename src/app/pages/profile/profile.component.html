@@ -1,0 +1,29 @@
+
+<div class="button-container">
+    <button class="btn-action">
+        Follow <i class="heart-icon">&#9825;</i>
+    </button>
+</div>
+<div *ngIf="profile" class="profile-container">
+    <div class="profile-header">
+      <img [src]="profile.projects[0].image" alt="Profile Image" class="profile-image">
+      <div class="profile-info">
+        <h1>{{ profile.name }}</h1>
+        <p>{{ profile.description }}</p>
+        <div class="social-links">
+          <span *ngFor="let social of profile.social">{{ social }} | </span>
+        </div>
+        <div class="profile-tags">
+          <span *ngFor="let tag of profile.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="profile-projects">
+      <!-- <div *ngFor="let project of profile.projects" class="project-card">
+        <img [src]="project.image" alt="{{ project.title }}">
+        <p>{{ project.title }}</p>
+      </div> -->
+      <app-content-bloc [initialItems]="profile.projects" [initialTags]="[]"></app-content-bloc>
+    </div>
+  </div>
+  

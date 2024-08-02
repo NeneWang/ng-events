@@ -6,6 +6,9 @@ interface Item {
   image: string;
   tags: string[];
   description: string;
+  date: string;
+  significant_views: number;
+  creator_slug: string;
 }
 
 
