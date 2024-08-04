@@ -1,7 +1,5 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 import {
-  ChartComponent,
   ApexAxisChartSeries,
   ApexChart,
   ApexPlotOptions,
@@ -10,8 +8,7 @@ import {
   ApexDataLabels,
   ApexYAxis,
   ApexGrid,
-  ApexTitleSubtitle
-} from "ng-apexcharts";
+} from 'ng-apexcharts';
 
 
 export type ChartOptions = {
@@ -25,68 +22,73 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
 };
 
-
-
+const mockEventsData = [
+  {
+    title: 'Landscape Painting',
+    x: 'Landscape Painting',
+    y: [
+      new Date('2024-01-15').getTime(),
+      new Date('2024-01-20').getTime()
+    ],
+    fillColor: '#008FFB'
+  },
+  {
+    title: 'Abstract Art',
+    x: 'Abstract Art',
+    y: [
+      new Date('2024-02-05').getTime(),
+      new Date('2024-02-10').getTime()
+    ],
+    fillColor: '#00E396'
+  },
+  {
+    title: 'Sculpture Exhibition',
+    x: 'Sculpture Exhibition',
+    y: [
+      new Date('2024-03-01').getTime(),
+      new Date('2024-03-05').getTime()
+    ],
+    fillColor: '#775DD0'
+  },
+  {
+    title: 'Digital Art Show',
+    x: 'Digital Art Show',
+    y: [
+      new Date('2024-03-10').getTime(),
+      new Date('2024-03-15').getTime()
+    ],
+    fillColor: '#FEB019'
+  },
+  {
+    title: 'Photography Exhibition',
+    x: 'Photography Exhibition',
+    y: [
+      new Date('2024-04-01').getTime(),
+      new Date('2024-04-07').getTime()
+    ],
+    fillColor: '#FF4560'
+  }
+];
 
 @Component({
   selector: 'app-events-screen',
   templateUrl: './events-screen.component.html',
   styleUrls: ['./events-screen.component.scss']
 })
-export class EventsScreenComponent   {
+export class EventsScreenComponent {
   public chartOptions: any;
-
+  public events = mockEventsData;
+  
   constructor() {
     this.chartOptions = {
       series: [
         {
-          data: [
-            {
-              x: "Analysis",
-              y: [
-                new Date("2019-02-27").getTime(),
-                new Date("2019-03-04").getTime()
-              ],
-              fillColor: "#008FFB"
-            },
-            {
-              x: "Design",
-              y: [
-                new Date("2019-03-04").getTime(),
-                new Date("2019-03-08").getTime()
-              ],
-              fillColor: "#00E396"
-            },
-            {
-              x: "Coding",
-              y: [
-                new Date("2019-03-07").getTime(),
-                new Date("2019-03-10").getTime()
-              ],
-              fillColor: "#775DD0"
-            },
-            {
-              x: "Testing",
-              y: [
-                new Date("2019-03-08").getTime(),
-                new Date("2019-03-12").getTime()
-              ],
-              fillColor: "#FEB019"
-            },
-            {
-              x: "Deployment",
-              y: [
-                new Date("2019-03-12").getTime(),
-                new Date("2019-03-17").getTime()
-              ],
-              fillColor: "#FF4560"
-            }
-          ]
+          data: mockEventsData
         }
       ],
       chart: {
         height: 350,
-        type: "rangeBar"
+        type: 'rangeBar'
       },
       plotOptions: {
         bar: {
@@ -99,31 +101,34 @@ export class EventsScreenComponent   {
       },
       dataLabels: {
         enabled: true,
-        formatter: function(val: (string | number | Date)[], opts: { w: { globals: { labels: { [x: string]: any; }; }; }; dataPointIndex: string | number; }) {
+        formatter: function (val: [number, number], opts: { w: { globals: { labels: { [x: string]: any } } }; dataPointIndex: number }) {
           const label = opts.w.globals.labels[opts.dataPointIndex];
           const a = new Date(val[0]);
           const b = new Date(val[1]);
           const diff = Math.ceil((Number(b) - Number(a)) / (1000 * 60 * 60 * 24));
-          return label + ": " + diff + (diff > 1 ? " days" : " day");
+          return label + ': ' + diff + (diff > 1 ? ' days' : ' day');
         },
         style: {
-          colors: ["#f3f4f5", "#fff"]
+          colors: ['#f3f4f5', '#fff']
         }
       },
       xaxis: {
-        type: "datetime"
+        type: 'datetime'
       },
       yaxis: {
         show: false
       },
       grid: {
         row: {
-          colors: ["#f3f4f5", "#fff"],
+          colors: ['#f3f4f5', '#fff'],
           opacity: 1
         }
       }
     };
   }
+  // ngOnInit(): void {
+  //   throw new Error('Method not implemented.');
+  // }
 
-  
+  // ngOnInit(): void {}
 }

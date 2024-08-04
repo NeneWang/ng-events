@@ -7,17 +7,38 @@
   instantly get to an event for free.
 </p>
 
+<div class="events-cards">
+  <div class="event-card" *ngFor="let event of events">
+    <mat-card>
+      <div class="card-content">
+        <img mat-card-image class="card-image" src="https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png">
+        <div class="card-text">
+          <mat-card-title class="card-title">{{ event.title }}</mat-card-title>
+          <p class="card-description" > Starts {{ event.y[0] | date}}
+            <br>
+            Ends {{ event.y[1] | date}}
+          </p>
+          
+          <mat-card-content class="card-description">description</mat-card-content>
+        </div>
+      </div>
+    </mat-card>
+  </div>
+</div>
+
+
+<br>
 <div id="chart">
     <!-- <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [title]="chartOptions.title"></apx-chart> -->
     <apx-chart
-    [series]="chartOptions.series"
-    [chart]="chartOptions.chart"
-    [fill]="chartOptions.fill"
-    [grid]="chartOptions.grid"
-    [dataLabels]="chartOptions.dataLabels"
-    [plotOptions]="chartOptions.plotOptions"
-    [xaxis]="chartOptions.xaxis"
-    [yaxis]="chartOptions.yaxis"
-  ></apx-chart>
+        [series]="chartOptions.series || []"
+        [chart]="chartOptions.chart"
+        [fill]="chartOptions.fill"
+        [grid]="chartOptions.grid"
+        [dataLabels]="chartOptions.dataLabels"
+        [plotOptions]="chartOptions.plotOptions"
+        [xaxis]="chartOptions.xaxis"
+        [yaxis]="chartOptions.yaxis"
+    ></apx-chart>
   
 </div>

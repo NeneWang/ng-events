@@ -30,6 +30,7 @@ import { VlogsScreenComponent } from './pages/vlogs-screen/vlogs-screen.componen
 import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgApexchartsModule } from "ng-apexcharts";
+import { DateRangePipe } from './date-range.pipe';
 
 
 @NgModule({
@@ -46,6 +47,7 @@ import { NgApexchartsModule } from "ng-apexcharts";
     VlogsScreenComponent,
     ShrinesScreenComponent,
     ProfileComponent,
+    DateRangePipe,
   ],
   imports: [
     MatInputModule,
@@ -60,7 +62,8 @@ import { NgApexchartsModule } from "ng-apexcharts";
     MatCardModule,
     MatChipsModule,
     MatGridListModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    
   ],
   providers: [],
   bootstrap: [AppComponent]
