@@ -1,0 +1,87 @@
+<form [formGroup]="signupForm">
+  <div>
+    <br />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input
+        class="input-height"
+        formControlName="email"
+        matInput
+        type="email"
+      />
+      <mat-error *ngIf="emailControl.hasError('required')"
+        >Email is required</mat-error
+      >
+      <mat-error *ngIf="emailControl.hasError('email')"
+        >Invalid email format</mat-error
+      >
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Password</mat-label>
+      <input
+        class="input-height"
+        formControlName="password"
+        matInput
+        type="password"
+      />
+      <mat-error *ngIf="passwordControl.hasError('required')"
+        >Password is required</mat-error
+      >
+      <mat-error *ngIf="passwordControl.hasError('minlength')"
+        >Password must be at least 6 characters long</mat-error
+      >
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Re Enter Password</mat-label>
+      <input
+        class="input-height"
+        formControlName="re_password"
+        matInput
+        type="password"
+      />
+      <mat-error *ngIf="rePasswordControl.hasError('required')"
+        >Re-entering password is required</mat-error
+      >
+    </mat-form-field>
+    <mat-error *ngIf="signupForm.hasError('mismatch')"
+      >Passwords do not match</mat-error
+    >
+    <br />
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>First Name</mat-label>
+      <input
+        class="input-height"
+        formControlName="first_name"
+        matInput
+        type="text"
+      />
+    </mat-form-field>
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Last Name</mat-label>
+      <input
+        class="input-height"
+        formControlName="last_name"
+        matInput
+        type="text"
+      />
+    </mat-form-field>
+
+    <mat-checkbox formControlName="agree">
+      I agree to <a href="" target="_blank">terms and conditions</a>.
+    </mat-checkbox>
+    <mat-error *ngIf="agreeControl.hasError('required')"
+      >You must agree to the terms and conditions</mat-error
+    >
+  </div>
+  <br />
+  <button
+    (click)="signup()"
+    appearance="outline"
+    class="full-width"
+    mat-stroked-button
+    color="primary"
+  >
+    Sign Up
+  </button>
+</form>

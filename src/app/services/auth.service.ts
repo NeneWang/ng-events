@@ -51,10 +51,28 @@ export class AuthService {
 
   }
 
+  signup(loginPayload: SignupPayload): void {
+    this.isAuthenticated = true;
+    this.httpClient.post(`${environment.baseUrl}/users`, loginPayload).subscribe({
+      next: (response) => {
+        console.log('Signup successful', response);
+        return true
+      },
+      error: (error) => {
+        console.error('Signup error', error);
+        return false
+      },
+    });
+    
+    
+
+  }
+
   logout(): void {
     this.isAuthenticated = false;
     this.router.navigate(['/login']);
   }
+
 
   isAuthenticatedUser(): boolean {
     return this.isAuthenticated;
@@ -79,4 +97,14 @@ const MOCKAPI = 'https://645a796665bd868e931c34ee.mockapi.io/';
 export interface LoginPayload {
   email: string | null;
   password: string | null;
+}
+
+export interface SignupPayload {
+  email: string | null;
+  password: string | null;
+  re_password: string | null;
+  // username: string | null;
+  first_name: string | null;
+  last_name: string | null;
+  agree: boolean | null;
 }

@@ -31,7 +31,11 @@
         placeholder="Titles or Creators"
         (keydown)="onSearch($event)"
       />
+
       <span class="flex-spacer"></span>
+      <button *ngIf="!isLoggedIn()" mat-button routerLink="/auth/signup">
+        Signup
+      </button>
       <button *ngIf="!isLoggedIn()" mat-button routerLink="/auth/login">
         Login
       </button>

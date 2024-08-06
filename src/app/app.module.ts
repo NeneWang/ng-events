@@ -1,3 +1,4 @@
+import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
 import { StudentManagementModule } from './student-management/student-management.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
@@ -22,7 +23,7 @@ import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from "@angular/material/form-field";
 import { MatCardModule } from '@angular/material/card';
 import { MatChipsModule } from '@angular/material/chips';
-import {MatGridListModule} from '@angular/material/grid-list';
+import { MatGridListModule } from '@angular/material/grid-list';
 import { ExploreScreenComponent } from './pages/explore-screen/explore-screen.component';
 import { ContentBlocComponent } from './components/content-bloc/content-bloc.component';
 import { WordLimitPipe } from './word-limit.pipe';
@@ -31,6 +32,8 @@ import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { DateRangePipe } from './date-range.pipe';
+import { SignupComponent } from './pages/signup/signup.component';
+
 
 
 @NgModule({
@@ -48,6 +51,7 @@ import { DateRangePipe } from './date-range.pipe';
     ShrinesScreenComponent,
     ProfileComponent,
     DateRangePipe,
+    SignupComponent,
   ],
   imports: [
     MatInputModule,
@@ -63,7 +67,8 @@ import { DateRangePipe } from './date-range.pipe';
     MatChipsModule,
     MatGridListModule,
     NgApexchartsModule,
-    
+    MatCheckboxModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
