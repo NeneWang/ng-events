@@ -32,12 +32,13 @@ export class SignupComponent {
     return (control: AbstractControl): ValidationErrors | null => {
       const password = control.get('password')?.value;
       const re_password = control.get('re_password')?.value;
-      return password === re_password ? {mismatch: false} : { mismatch: true };
+      return password === re_password ? null : { mismatch: true };
     };
   }
 
   signup(): void {
     if (this.signupForm.invalid) {
+      console.log('is invalide!!')
       this.signupForm.markAllAsTouched();
     } else {
       const formData = this.signupForm.getRawValue();

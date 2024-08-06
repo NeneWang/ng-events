@@ -21,28 +21,24 @@ export class AuthService {
 
   public authUser$ = this._authUser$.asObservable();
 
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   login(payload: LoginPayload): void {
 
-    // const payload = {
-    //   email: '',
-    //   password: '',
-    // password":"password 1","token":"token 1","email":"Dagmar.Swaniawski@gmail.com","id":"1"}
-    // }
     this.isAuthenticated = true;
     this.httpClient
-      .get<any[]>(
-        `${environment.baseUrl}/users?email=${payload.email}&password=${payload.password}`
+      .post(
+        `${environment.baseUrl}/login`,
+        payload
       )
       .subscribe({
         next: (response) => {
-          if (!response.length) {
-            alert('Usuario o contrasena invalidos');
-          } else {
-            const authUser = response[0];
-            this._authUser$.next(authUser);
-            localStorage.setItem('token', authUser.token);
-            this.router.navigate(['/dashboard/students']);
+          console.log('Login successful', response);
+          console.log('Payload', payload);
+          if (payload?.email !== null) {
+            localStorage.setItem('email', payload.email);
+            this.router.navigate(['/']);
           }
+
         },
         error: (err) => {
           alert('Error de conexion');
@@ -51,30 +47,37 @@ export class AuthService {
 
   }
 
+
   signup(loginPayload: SignupPayload): void {
     this.isAuthenticated = true;
-    this.httpClient.post(`${environment.baseUrl}/users`, loginPayload).subscribe({
+    this.httpClient.post(`${environment.baseUrl}/signup`, loginPayload).subscribe({
       next: (response) => {
         console.log('Signup successful', response);
-        return true
+        if (loginPayload.email !== null) {
+          localStorage.setItem('email', loginPayload.email);
+        }
+
+        this.router.navigate(['/']);  // Navigate on success
       },
       error: (error) => {
         console.error('Signup error', error);
-        return false
+        // this.errorService.showError('Signup failed: ' + error.message);  // Show error message
       },
     });
-    
-    
-
   }
+
 
   logout(): void {
     this.isAuthenticated = false;
+    localStorage.removeItem('email');
     this.router.navigate(['/login']);
   }
 
 
   isAuthenticatedUser(): boolean {
+    if (localStorage.getItem('email')) {
+      this.isAuthenticated = true;
+    }
     return this.isAuthenticated;
   }
 
@@ -103,8 +106,8 @@ export interface SignupPayload {
   email: string | null;
   password: string | null;
   re_password: string | null;
-  // username: string | null;
   first_name: string | null;
   last_name: string | null;
   agree: boolean | null;
 }
+

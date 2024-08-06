@@ -1,4 +1,4 @@
 export const environment = {
   // baseUrl: 'https://json-server-render-7y3s.onrender.com',
-  baseUrl: 'https://645a796665bd868e931c34ee.mockapi.io',
+  baseUrl: 'http://127.0.0.1:8000/api_showcase'
 };

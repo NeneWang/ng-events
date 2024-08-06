@@ -33,6 +33,10 @@ import { ProfileComponent } from './pages/profile/profile.component';
 import { NgApexchartsModule } from "ng-apexcharts";
 import { DateRangePipe } from './date-range.pipe';
 import { SignupComponent } from './pages/signup/signup.component';
+import { PublishArtworkComponent } from './pages/publish-artwork/publish-artwork.component';
+import { HostComponent } from './pages/host/host.component';
+import { DraftComponent } from './pages/draft/draft.component';
+import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.component';
 
 
 
@@ -52,6 +56,10 @@ import { SignupComponent } from './pages/signup/signup.component';
     ProfileComponent,
     DateRangePipe,
     SignupComponent,
+    PublishArtworkComponent,
+    HostComponent,
+    DraftComponent,
+    PublishShrineComponent,
   ],
   imports: [
     MatInputModule,

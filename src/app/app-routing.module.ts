@@ -12,6 +12,12 @@ import { ShrinesScreenComponent } from './pages/shrines-screen/shrines-screen.co
 import { ProfileComponent } from './pages/profile/profile.component';
 import { EventsScreenComponent } from './pages/events-screen/events-screen.component';
 
+import { PublishArtworkComponent } from './pages/publish-artwork/publish-artwork.component';
+import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.component';
+import { HostComponent } from './pages/host/host.component';
+import { DraftComponent } from './pages/draft/draft.component';
+
+
 
 const routes: Routes = [
   // { path: '', component: HomeScreenComponent },
@@ -45,6 +51,18 @@ const routes: Routes = [
   { path: 'profile/:username', component: ProfileComponent },
   {
     path: 'event', component: EventsScreenComponent
+  },
+  {
+    path: 'host', component: HostComponent
+  },
+  {
+    path: 'draft', component: DraftComponent
+  },
+  {
+    path: 'publish-artwork', component: PublishArtworkComponent
+  },
+  {
+    path: 'publish-shrine', component: PublishShrineComponent
   }
 ];
 

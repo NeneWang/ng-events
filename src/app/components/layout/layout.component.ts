@@ -21,7 +21,8 @@ export class LayoutComponent {
   }
 
   getAuthName(): string {
-    return this.authService.getAuthUserData().name;
+    // return this.authService.getAuthUserData().name;
+    return localStorage.getItem('email') || '';
   }
 
   logout(): void {
