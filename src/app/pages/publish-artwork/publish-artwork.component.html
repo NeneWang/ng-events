@@ -1,1 +1,92 @@
-<p>publish-artwork works!</p>
+<form [formGroup]="form">
+  <div>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Title of Work</mat-label>
+      <input
+        formControlName="titleOfWork"
+        matInput
+        type="text"
+        class="input-height"
+      />
+    </mat-form-field>
+    <br />
+
+    <fieldset>
+      <legend>Medium *</legend>
+      <div formGroupName="mediums" class="mediums-container">
+        <mat-checkbox formControlName="Photography">Photography</mat-checkbox>
+        <mat-checkbox formControlName="Painting">Painting</mat-checkbox>
+        <mat-checkbox formControlName="MixedMedia">Mixed Media</mat-checkbox>
+        <mat-checkbox formControlName="Print">Print</mat-checkbox>
+        <mat-checkbox formControlName="Drawing">Drawing</mat-checkbox>
+        <mat-checkbox formControlName="DigitalMedia"
+          >Digital Media</mat-checkbox
+        >
+        <mat-checkbox formControlName="Film">Film</mat-checkbox>
+        <mat-checkbox formControlName="Literary">Literary</mat-checkbox>
+        <mat-checkbox formControlName="Music">Music</mat-checkbox>
+        <mat-checkbox formControlName="Other" (change)="onOtherChange($event)"
+          >Other</mat-checkbox
+        >
+      </div>
+    </fieldset>
+
+    <br />
+    <div *ngIf="showOtherField">
+      <mat-form-field appearance="outline">
+        <mat-label>Other Medium</mat-label>
+        <input formControlName="otherMedium" matInput type="text" />
+      </mat-form-field>
+    </div>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Artist Statement *</mat-label>
+      <textarea
+        matInput
+        id="artist-statement"
+        name="artistStatement"
+        maxlength="150"
+        rows="5"
+        formControlName="artistStatement"
+      ></textarea>
+    </mat-form-field>
+
+    <p>Upload your submission using ONE of the options below.</p>
+
+    <!-- <app-upload /> -->
+
+    <div>
+      <input type="file" (change)="onFileSelected($event)" />
+      <br />
+      <br />
+      <button (click)="onUpload()">Upload</button>
+      <div *ngIf="uploadProgress > 0">
+        <p>Progress: {{ uploadProgress }}%</p>
+      </div>
+      <div *ngIf="uploadMessage">
+        <p>{{ uploadMessage }}</p>
+      </div>
+    </div>
+
+    <p>
+      or if you have a file larger than 200mb, or a youtue/third party link
+      please provide the link.
+    </p>
+
+    <div>
+      <mat-label>Enter Submission Link</mat-label>
+      <br />
+      <input
+        matInput
+        id="submission_link"
+        name="submission_link"
+        type="text"
+        id="submission_link"
+        name="submission_link"
+      />
+    </div>
+
+    <button type="button" (click)="submit()">Submit</button>
+  </div>
+</form>

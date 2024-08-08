@@ -17,7 +17,7 @@ export class LoginComponent {
     password: this.passwordControl,
   });
 
-  constructor(private authService: AuthService, private router: Router) {}
+  constructor(private authService: AuthService, private router: Router) { }
 
   login(): void {
     if (this.loginForm.invalid) {
@@ -26,4 +26,12 @@ export class LoginComponent {
       this.authService.login(this.loginForm.getRawValue());
     }
   }
+
+  anonymousLogin(): void {
+    this.authService.login({
+      email: 'anonymous@gmail.com',
+      password: 'anon448',
+    });
+  }
+
 }

@@ -44,6 +44,7 @@ export class SignupComponent {
       const formData = this.signupForm.getRawValue();
       console.log('Form Data:', formData);
 
+      // this.authService.signup(formData);
       this.authService.signup(formData);
     }
   }

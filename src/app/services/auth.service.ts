@@ -75,9 +75,15 @@ export class AuthService {
 
 
   isAuthenticatedUser(): boolean {
+    if (this.isAuthenticated){
+      return this.isAuthenticated;
+    }
+
     if (localStorage.getItem('email')) {
       this.isAuthenticated = true;
     }
+
+    
     return this.isAuthenticated;
   }
 

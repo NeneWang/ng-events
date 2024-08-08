@@ -37,6 +37,10 @@ import { PublishArtworkComponent } from './pages/publish-artwork/publish-artwork
 import { HostComponent } from './pages/host/host.component';
 import { DraftComponent } from './pages/draft/draft.component';
 import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.component';
+import { MatRadioModule } from '@angular/material/radio';
+import { UploadComponent } from './components/upload/upload.component';
+
+import { ArtshowService } from './services/artshow.service';
 
 
 
@@ -60,6 +64,7 @@ import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.co
     HostComponent,
     DraftComponent,
     PublishShrineComponent,
+    UploadComponent,
   ],
   imports: [
     MatInputModule,
@@ -75,10 +80,12 @@ import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.co
     MatChipsModule,
     MatGridListModule,
     NgApexchartsModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatRadioModule,
+
 
   ],
-  providers: [],
+  providers: [ArtshowService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
