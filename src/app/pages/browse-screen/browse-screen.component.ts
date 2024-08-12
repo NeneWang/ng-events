@@ -10,6 +10,7 @@ export class BrowseScreenComponent implements OnInit {
   initial_items = [
     {
       "title": "Event 1",
+      "slug": "event-1",
       "creator": "Creator A",
       "creator_slug": "creator-a",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -20,6 +21,7 @@ export class BrowseScreenComponent implements OnInit {
     },
     {
       "title": "Event 2",
+      "slug": "event-2",
       "creator": "Creator B",
       "creator_slug": "creator-b",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -30,6 +32,7 @@ export class BrowseScreenComponent implements OnInit {
     },
     {
       "title": "Vlog 1",
+      "slug": "vlog-1",
       "creator": "Creator C",
       "creator_slug": "creator-c",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",

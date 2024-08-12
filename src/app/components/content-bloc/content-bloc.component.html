@@ -24,21 +24,22 @@
   </div>
 
   <div class="items-list">
-    <mat-card *ngFor="let item of filteredItems" class="item">
+    <mat-card *ngFor="let item of filteredItems" class="item" [routerLink]="['/work', item.slug]">
       <img mat-card-image [src]="item.image" alt="{{ item.title }}" />
       <mat-card-content>
         <h3>{{ item.title }}</h3>
-        <a routerLink="/profile/{{item.creator_slug}}">{{ item.creator }}</a>
+        <a [routerLink]="['/profile', item.creator_slug]">{{ item.creator }}</a>
         <mat-chip-set aria-label="Fish selection">
           <mat-chip *ngFor="let tag of item.tags" class="mat-mdc-chip">
             {{ tag }}
           </mat-chip>
         </mat-chip-set>
       </mat-card-content>
-
+  
       <p class="just-left">
         {{ item.description | wordLimit: 20 }}
       </p>
     </mat-card>
   </div>
+  
 </div>

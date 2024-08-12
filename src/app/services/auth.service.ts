@@ -47,6 +47,10 @@ export class AuthService {
 
   }
 
+  getUserEmail(): string | undefined {
+    return localStorage.getItem('email') || undefined;
+  }
+
 
   signup(loginPayload: SignupPayload): void {
     this.isAuthenticated = true;

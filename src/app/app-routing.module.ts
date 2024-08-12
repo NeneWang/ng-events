@@ -16,7 +16,7 @@ import { PublishArtworkComponent } from './pages/publish-artwork/publish-artwork
 import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.component';
 import { HostComponent } from './pages/host/host.component';
 import { DraftComponent } from './pages/draft/draft.component';
-
+import { WorkComponent } from './pages/work/work.component';
 
 
 const routes: Routes = [
@@ -63,6 +63,9 @@ const routes: Routes = [
   },
   {
     path: 'publish-shrine', component: PublishShrineComponent
+  },
+  {
+    path: 'work/:slug', component: WorkComponent
   }
 ];
 

@@ -1,14 +1,19 @@
 import { Component, Input } from '@angular/core';
+import { OnChanges, SimpleChanges } from '@angular/core';
+
+
 
 interface Item {
   title: string;
   creator: string;
+  slug: string;
   image: string;
   tags: string[];
   description: string;
   date: string;
   significant_views: number;
   creator_slug: string;
+  favorite?: boolean;
 }
 
 
@@ -20,7 +25,7 @@ interface Item {
 
 
 
-export class ContentBlocComponent {
+export class ContentBlocComponent implements OnChanges {
   @Input() initialItems: Item[] = [];
   @Input() initialTags: string[] = [];
 
@@ -28,10 +33,13 @@ export class ContentBlocComponent {
   filteredTags: string[] = [];
   filteredItems: Item[] = [];
 
-  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
-  ngOnInit() {
-    this.filteredItems = this.initialItems;
-    this.filteredTags = this.initialTags;
+  ngOnChanges(changes: SimpleChanges) {
+    if (changes['initialItems']) {
+      this.filteredItems = [...this.initialItems];
+    }
+    if (changes['initialTags']) {
+      this.filteredTags = [...this.initialTags];
+    }
   }
 
   toggleTag(tag: string): void {
@@ -72,6 +80,5 @@ export class ContentBlocComponent {
     this.filteredTags = this.initialTags.filter(tag =>
       tag.toLowerCase().includes(searchTerm)
     );
-
   }
 }

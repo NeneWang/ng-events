@@ -1,0 +1,25 @@
+<div class="button-container">
+  <button
+    class="btn-action btn-favorite"
+    [ngClass]="{ favorited: isFavorited }"
+    (click)="favoriteWork()"
+  >
+    Favorite
+    <i class="heart-icon" [ngClass]="{ favorited: isFavorited }">&#9825;</i>
+  </button>
+</div>
+<div *ngIf="work" class="profile-container">
+  <div class="profile-header">
+    <div class="profile-info">
+      <h1>{{ work.title }}</h1>
+      <br />
+      <div *ngIf="work.image">
+        <img [src]="work.image" alt="Profile Image" class="profile-image" />
+      </div>
+      <br />
+      <p>{{ work.description }}</p>
+
+      <div></div>
+    </div>
+  </div>
+</div>

@@ -77,6 +77,23 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/artwork', artwork);
   }
 
+  getExploreArtworks(): Observable<any> {
+    return this.http.get(environment.baseUrl + '/artwork');
+  }
+
+  getArtwork(slug: string, email:string | undefined): Observable<any> {
+    if (email){
+      return this.http.get(environment.baseUrl + '/artwork/' + slug + '?user_email=' + email);
+    }
+    return this.http.get(environment.baseUrl + '/artwork/' + slug);
+  }
+
+  toggleFavorite(slug: string, email: string): Observable<any> {
+    
+    // return this.http.get(environment.baseUrl + '/toggle_avorite', { artwork_slug: slug, user_email: email });
+    return this.http.get(environment.baseUrl + '/toggle_favorite?artwork_slug=' + slug + '&user_email=' + email);
+  }
+
   createTag(tag: string): Observable<any> {
     return this.http.post(environment.baseUrl + '/tag', { tag: tag });
   }

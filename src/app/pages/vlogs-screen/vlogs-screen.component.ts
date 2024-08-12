@@ -14,6 +14,7 @@ export class VlogsScreenComponent {
   items_initial = [
     {
       "title": "Behind the Scenes 1",
+      "slug": "behind-the-scenes-1",
       "creator": "Creator B",
       "creator_slug": "creator-b",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -24,6 +25,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Development Update",
+      "slug": "development-update",
       "creator": "Dev C",
       "creator_slug": "dev-c",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -34,6 +36,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Vlog 2",
+      "slug": "vlog-2",
       "creator": "Creator D",
       "creator_slug": "creator-d",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -44,6 +47,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Project Insights",
+      "slug": "project-insights",
       "creator": "Creator E",
       "creator_slug": "creator-e",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -54,6 +58,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Behind the Scenes 2",
+      "slug": "behind-the-scenes-2",
       "creator": "Creator F",
       "creator_slug": "creator-f",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -64,6 +69,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Development Diary",
+      "slug": "development-diary",
       "creator": "Dev G",
       "creator_slug": "dev-g",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -74,6 +80,7 @@ export class VlogsScreenComponent {
     },
     {
       "title": "Vlog 3",
+      "slug": "vlog-3",
       "creator": "Creator H",
       "creator_slug": "creator-h",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",

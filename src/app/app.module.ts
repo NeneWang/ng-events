@@ -41,6 +41,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { UploadComponent } from './components/upload/upload.component';
 
 import { ArtshowService } from './services/artshow.service';
+import { WorkComponent } from './pages/work/work.component';
 
 
 
@@ -65,6 +66,7 @@ import { ArtshowService } from './services/artshow.service';
     DraftComponent,
     PublishShrineComponent,
     UploadComponent,
+    WorkComponent,
   ],
   imports: [
     MatInputModule,

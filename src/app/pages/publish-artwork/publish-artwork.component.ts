@@ -102,6 +102,8 @@ export class PublishArtworkComponent implements OnInit {
       // console.log(this.form.value);
       const submissionContent = this.form.value;
       submissionContent.account_email = localStorage.getItem('email') || '';
+      console.log("whats going on with the submission link?", this.form.value);
+
       this.artshowService.publishArtwork(submissionContent).subscribe({
         next: (response) => {
           console.log('Artwork published', response);
@@ -122,8 +124,9 @@ export class PublishArtworkComponent implements OnInit {
             this.uploadProgress = event.message;
           } else {
             this.uploadMessage = event.filename ? `File uploaded: ${event.filename}` : 'Upload complete';
-            if (event.url){
+            if (event.url && event.url.length > 1) {
               // this.form.submission_link = event.url;
+              console.log("Setting submission link to", event.url, 'from', this.form.get('submission_link')?.value);
               this.form.patchValue({
                 submission_link: event.url
               });

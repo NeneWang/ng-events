@@ -1,0 +1,51 @@
+.profile-image {
+    max-height: 30em;
+    max-width: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.5s;
+    cursor: pointer;
+}
+
+/* Default button style */
+.btn-favorite {
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    color: #333;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+/* Heart icon default style */
+.heart-icon {
+    margin-left: 8px;
+    color: #333;
+    font-size: 18px;
+    transition: color 0.3s ease, transform 0.3s ease;
+}
+
+/* When the button is favorited */
+.btn-favorite.favorited {
+    background-color: #ffebec;
+    border-color: #ffccd5;
+    color: #ff4b5c;
+}
+
+.btn-favorite.favorited .heart-icon {
+    color: #ff4b5c;
+    /* Red color when favorited */
+    transform: scale(1.2);
+    /* Slightly enlarge the heart icon */
+}
+
+/* Hover effect */
+.btn-favorite:hover {
+    background-color: #e0e0e0;
+}
+
+.btn-favorite.favorited:hover {
+    background-color: #ffd5d9;
+}

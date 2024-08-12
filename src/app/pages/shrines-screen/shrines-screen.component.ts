@@ -13,6 +13,7 @@ export class ShrinesScreenComponent {
   items_initial = [
     {
       "title": "Cooking Masterclass",
+      "slug": "cooking-masterclass",
       "creator": "Chef E",
       "creator_slug": "chef-e",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -23,6 +24,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Digital Art Showcase",
+      "slug": "digital-art-showcase",
       "creator": "Artist F",
       "creator_slug": "artist-f",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -33,6 +35,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Travel Vlogs",
+      "slug": "travel-vlogs",
       "creator": "Traveler G",
       "creator_slug": "traveler-g",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -43,6 +46,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Science Experiments",
+      "slug": "science-experiments",
       "creator": "Scientist H",
       "creator_slug": "scientist-h",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -53,6 +57,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Fantasy Illustrations",
+      "slug": "fantasy-illustrations",
       "creator": "Artist I",
       "creator_slug": "artist-i",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -63,6 +68,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Personal Growth Blog",
+      "slug": "personal-growth-blog",
       "creator": "Author J",
       "creator_slug": "author-j",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -73,6 +79,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Tech Reviews",
+      "slug": "tech-reviews",
       "creator": "Reviewer K",
       "creator_slug": "reviewer-k",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
@@ -83,6 +90,7 @@ export class ShrinesScreenComponent {
     },
     {
       "title": "Music Production Tips",
+      "slug": "music-production-tips",
       "creator": "Producer L",
       "creator_slug": "producer-l",
       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
