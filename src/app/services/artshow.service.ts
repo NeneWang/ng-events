@@ -102,4 +102,8 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/event', event);
   }
 
+  getFavoritedArtworks(email: string): Observable<any> {
+    return this.http.get(environment.baseUrl + '/favorites?user_email=' + email);
+  }
+
 }
