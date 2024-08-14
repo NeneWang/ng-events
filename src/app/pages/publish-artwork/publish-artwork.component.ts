@@ -19,6 +19,11 @@ export class PublishArtworkComponent implements OnInit {
   uploadProgress = 0;
   uploadMessage = '';
   submission_link = '';
+  
+  showOtherField = false;
+  http: any;
+  account_email = "";
+  post_file_url = environment.baseUrl + '/upload';
 
 
   form: FormGroup = this.fb.group({
@@ -39,11 +44,6 @@ export class PublishArtworkComponent implements OnInit {
     artistStatement: [''],
     submission_link: ['']
   });
-
-  showOtherField = false;
-  http: any;
-  account_email = "";
-  post_file_url = environment.baseUrl + '/upload';
 
   // If not user logged in, redirect to login page
   constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private artshowService: ArtshowService) {

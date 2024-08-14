@@ -39,6 +39,7 @@ import { DraftComponent } from './pages/draft/draft.component';
 import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.component';
 import { MatRadioModule } from '@angular/material/radio';
 import { UploadComponent } from './components/upload/upload.component';
+import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-material-components/datetime-picker';
 
 import { ArtshowService } from './services/artshow.service';
 import { WorkComponent } from './pages/work/work.component';
@@ -84,6 +85,8 @@ import { WorkComponent } from './pages/work/work.component';
     NgApexchartsModule,
     MatCheckboxModule,
     MatRadioModule,
+    NgxMatDatetimePickerModule,
+    NgxMatTimepickerModule
 
 
   ],

@@ -78,7 +78,7 @@ const mockEventsData = [
 export class EventsScreenComponent {
   public chartOptions: any;
   public events = mockEventsData;
-  
+
   constructor() {
     this.chartOptions = {
       series: [

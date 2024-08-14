@@ -29,8 +29,10 @@ interface Event{
     image: str
     tags : List[str]
     description: str
-    date: dt
+    date: strng
     significant_views: int
+    start_date: string;
+    end_date: string;
    */
   title: string;
   creator: string;
@@ -40,6 +42,9 @@ interface Event{
   description: string;
   date: string;
   significant_views: number;
+
+  start_date: string;
+  end_date: string;
 }
 
 @Injectable({
@@ -98,7 +103,7 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/tag', { tag: tag });
   }
 
-  createEvent(event: Event): Observable<any> {
+  createEvent(event: Event): Observable<unknown> {
     return this.http.post(environment.baseUrl + '/event', event);
   }
 
