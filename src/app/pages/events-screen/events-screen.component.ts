@@ -125,6 +125,12 @@ export class EventsScreenComponent {
         }
       }
     };
+
+    console.log('Raw Hardcoded Events', this.events);
+    
+
+
+
   }
   // ngOnInit(): void {
   //   throw new Error('Method not implemented.');

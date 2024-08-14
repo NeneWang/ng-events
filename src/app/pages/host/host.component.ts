@@ -1,11 +1,12 @@
 import { Router } from '@angular/router';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 import { ArtshowService } from 'src/app/services/artshow.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -15,14 +16,17 @@ import { ArtshowService } from 'src/app/services/artshow.service';
 })
 export class HostComponent {
 
+  private _snackBar = inject(MatSnackBar);
   selectedFile: File | null = null;
   uploadProgress = 0;
   uploadMessage = '';
   submission_link = '';
-  
+
   showOtherField = false;
   http: any;
   account_email = "";
+  upload_succeeded = false;
+
   post_file_url = environment.baseUrl + '/upload';
 
 
@@ -51,7 +55,7 @@ export class HostComponent {
       this.authService.logout();
       // Redirect
       this.router.navigate(['/auth/login']);
-    }else{
+    } else {
       this.account_email = localStorage.getItem('email')!;
     }
   }
@@ -86,6 +90,21 @@ export class HostComponent {
       })
     );
   }
+  openSnackBar(message: string, action: string) {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.panelClass = ['custom-snackbar'];
+  
+    this._snackBar.open(message, action, config);
+  }
+  
+
+  resetForm(): void {
+    this.form.reset();
+    this.removeUpload();
+    this.upload_succeeded = false;
+  }
 
   onOtherChange(event: any): void {
     this.showOtherField = event.checked;
@@ -97,75 +116,44 @@ export class HostComponent {
     this.onUpload();
   }
 
-  submit(): void{
-    if(this.form.valid){
-      console.log("Submitting the form:")
-      console.log(this.form.value);
-      
+  submit(): void {
+    if (this.form.valid) {
+
       const submissionContent = this.form.value;
       submissionContent.account_email = localStorage.getItem('email') || '';
-      console.log("whats going on with the submission link?", this.form.value);
-      /**
-       * {
-          "title": "mmm",
-          "description": "m,mmm",
-          "mediums": {
-              "showcase": false,
-              "competition": true,
-              "gallery": false,
-              "performance": false,
-              "workshop": false,
-              "panel": false,
-              "other": false
-          },
-            "otherMedium": "",
-            "poster_link": "",
-            "account_email": "anonymous@gmail.com"
-        }
 
-        Convert into:
+      const submissionData = {
+        title: submissionContent.title,
+        creator: this.account_email,
+        creator_slug: this.account_email,
+        image: submissionContent.poster_link,
+        tags: [],
+        description: submissionContent.description,
+        date: submissionContent.start_date,
 
-        title: str
-        creator: str
-        creator_slug: str
-        image: str
-        tags : List[str]
-        description: str
-        date: dt
-        significant_views: int
+        significant_views: 0,
+        start_date: submissionContent.start_date,
+        end_date: submissionContent.end_date
 
-        start_date: string;
-        end_date: string;
-       */
+      }
 
-        const submissionData = {
-          title: submissionContent.title,
-          creator: this.account_email,
-          creator_slug: this.account_email,
-          image: submissionContent.poster_link,
-          tags: [],
-          description: submissionContent.description,
-          date: submissionContent.start_date,
-          
-          significant_views: 0,
-          start_date: submissionContent.start_date,
-          end_date: submissionContent.end_date
-
-        }
-
-        console.log('submission data', submissionData);
+      console.log('submission data', submissionData);
 
       this.artshowService.createEvent(submissionData).subscribe({
         next: (response) => {
           console.log('Artwork published', response);
-          this.router.navigate(['/']);
+          // this.router.navigate(['/event']);
+          this.upload_succeeded = true;
+          this.openSnackBar('Event published', 'Close');
         },
         error: (error) => {
           console.error('Artwork publish error', error);
+          this.openSnackBar('Error publishing event', 'Close');
         }
       });
-    }else{
+    } else {
       console.log("Form is invalid", this.form);
+      this.openSnackBar('Form is invalid', 'Close');
     }
   }
 

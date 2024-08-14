@@ -43,7 +43,7 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
 
 import { ArtshowService } from './services/artshow.service';
 import { WorkComponent } from './pages/work/work.component';
-
+import {MatSnackBarModule} from '@angular/material/snack-bar';
 
 
 @NgModule({
@@ -68,6 +68,7 @@ import { WorkComponent } from './pages/work/work.component';
     PublishShrineComponent,
     UploadComponent,
     WorkComponent,
+    
   ],
   imports: [
     MatInputModule,
@@ -86,7 +87,8 @@ import { WorkComponent } from './pages/work/work.component';
     MatCheckboxModule,
     MatRadioModule,
     NgxMatDatetimePickerModule,
-    NgxMatTimepickerModule
+    NgxMatTimepickerModule,
+    MatSnackBarModule
 
 
   ],

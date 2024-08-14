@@ -102,6 +102,10 @@ export class ArtshowService {
   createTag(tag: string): Observable<any> {
     return this.http.post(environment.baseUrl + '/tag', { tag: tag });
   }
+  
+  getEvents(): Observable<any> {
+    return this.http.get(environment.baseUrl + '/events');
+  }
 
   createEvent(event: Event): Observable<unknown> {
     return this.http.post(environment.baseUrl + '/event', event);
@@ -110,5 +114,5 @@ export class ArtshowService {
   getFavoritedArtworks(email: string): Observable<any> {
     return this.http.get(environment.baseUrl + '/favorites?user_email=' + email);
   }
-
+  
 }
