@@ -1,3 +1,4 @@
+import { ArtshowService } from './../../services/artshow.service';
 import { Component, OnInit } from '@angular/core';
 import {
   ApexAxisChartSeries,
@@ -79,7 +80,7 @@ export class EventsScreenComponent {
   public chartOptions: any;
   public events = mockEventsData;
 
-  constructor() {
+  constructor(artshowService: ArtshowService) {
     this.chartOptions = {
       series: [
         {
@@ -125,6 +126,12 @@ export class EventsScreenComponent {
         }
       }
     };
+
+    const _events  = artshowService.getEvents().subscribe((events: any) => {
+      console.log('Events Data', this.events);
+      this.events = events;
+      console.log('Events', this.events);
+    });
 
     console.log('Raw Hardcoded Events', this.events);
     

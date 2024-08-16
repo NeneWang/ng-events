@@ -4,12 +4,10 @@
       <br />
       <mat-form-field appearance="outline" class="full-width">
         <mat-label>Title of Event</mat-label>
-        <input
-          formControlName="title"
-          matInput
-          type="text"
-          class="input-height"
-        />
+        <input formControlName="title" matInput type="text" class="input-height" />
+        <mat-error *ngIf="form.get('title')?.hasError('required')">
+          Title is required
+        </mat-error>
       </mat-form-field>
 
       <br />
@@ -18,13 +16,15 @@
       <mat-form-field appearance="outline" class="mid-width">
         <mat-label>Start Date-time</mat-label>
         <input
-          class="mid-width"
           matInput
-          value="2020-01-01T11:00"
+          class="mid-width"
           type="datetime-local"
           placeholder="start date"
           formControlName="start_date"
         />
+        <mat-error *ngIf="form.get('start_date')?.hasError('required')">
+          Valid Start Date is required
+        </mat-error>
       </mat-form-field>
 
       <br />
@@ -38,6 +38,9 @@
           placeholder="end date"
           formControlName="end_date"
         />
+        <mat-error *ngIf="form.get('end_date')?.hasError('required')">
+          Valid End Date is required
+        </mat-error>
       </mat-form-field>
 
       <br />
@@ -45,18 +48,15 @@
       <fieldset>
         <legend>Event Type</legend>
         <div formGroupName="mediums" class="mediums-container">
-          <mat-checkbox formControlName="showcase">Showcase</mat-checkbox>
-          <mat-checkbox formControlName="competition">Competition</mat-checkbox>
-          <mat-checkbox formControlName="gallery">Gallery</mat-checkbox>
-
-          <mat-checkbox formControlName="performance">performance</mat-checkbox>
-          <mat-checkbox formControlName="workshop">Workshop</mat-checkbox>
-
-          <mat-checkbox formControlName="panel">Panel</mat-checkbox>
-
-          <mat-checkbox formControlName="other" (change)="onOtherChange($event)"
-            >Other</mat-checkbox
-          >
+          <mat-checkbox class="mat-checkbox" formControlName="showcase">Showcase</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="competition">Competition</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="gallery">Gallery</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="performance">Performance</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="workshop">Workshop</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="panel">Panel</mat-checkbox>
+          <mat-checkbox class="mat-checkbox" formControlName="other" (change)="onOtherChange($event)">
+            Other
+          </mat-checkbox>
         </div>
       </fieldset>
 
@@ -78,6 +78,9 @@
           formControlName="description"
         ></textarea>
         <mat-label>Description</mat-label>
+        <mat-error *ngIf="form.get('description')?.hasError('required')">
+          Description is required
+        </mat-error>
       </mat-form-field>
 
       <p>Upload your Poster / Cover Image here.</p>
@@ -94,16 +97,14 @@
         <div *ngIf="uploadMessage">
           <p>{{ uploadMessage }}</p>
         </div>
-        <button *ngIf="this.selectedFile" (click)="removeUpload()">
-          Remove File
-        </button>
+        <button *ngIf="selectedFile" (click)="removeUpload()">Remove File</button>
       </div>
 
       <br />
 
       <p>
         If you want to track additional questions to your participants, or want
-        them to fill out additional applications, please feel free to inlcude
+        them to fill out additional applications, please feel free to include
         the links here.
       </p>
       <div>
@@ -111,12 +112,8 @@
         <br />
         <input
           matInput
-          id="poster_link"
           class="full-width"
-          name="poster_link"
           type="text"
-          id="poster_link"
-          name="poster_link"
           formControlName="poster_link"
         />
       </div>
@@ -130,14 +127,17 @@
 
 <div *ngIf="upload_succeeded">
   <h1>Event Created Successfully</h1>
-  <p> Title: {{ form.get("title")?.value }}</p>
-  <p> Starts: {{ form.get("start_date")?.value }}</p>
-  <p> End Date: {{ form.get("end_date")?.value }}</p>
-  <p> Description: {{ form.get("description")?.value }}</p>
-  <p *ngIf="form.get('poster_link')?.value"> Additional Forms: {{ form.get("poster_link")?.value }}</p>
-  <p> Mediums: {{ form.get("mediums")?.value }}</p>
+  <p>Title: {{ form.get('title')?.value }}</p>
+  <p>Starts: {{ form.get('start_date')?.value }}</p>
+  <p>End Date: {{ form.get('end_date')?.value }}</p>
+  <p>Description: {{ form.get('description')?.value }}</p>
+  <p *ngIf="form.get('poster_link')?.value">
+    Additional Forms: {{ form.get('poster_link')?.value }}
+  </p>
+  <p>Mediums: {{ form.get('mediums')?.value?.join(', ') }}</p>
 
-  <a ((click))="resetForm()">Create Another Event</a>
+  <button (click)="resetForm()">Create Another Event</button>
   <br />
-  <a routerLink="/event">Go to Events Page</a>
+  <br>
+  <button routerLink="/event">Go to Events Page</button>
 </div>
