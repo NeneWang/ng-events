@@ -16,8 +16,10 @@
           alt="{{event.y[0]}}"
           mat-card-image
           class="card-image"
-          src="https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png"
-        />
+          
+          [src]="event.img ? event.img : 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png'" 
+          
+          />
         <div class="card-text">
           <mat-card-title class="card-title">{{ event.title }}</mat-card-title>
           <p class="card-description">

@@ -17,7 +17,8 @@ import { PublishShrineComponent } from './pages/publish-shrine/publish-shrine.co
 import { HostComponent } from './pages/host/host.component';
 import { DraftComponent } from './pages/draft/draft.component';
 import { WorkComponent } from './pages/work/work.component';
-
+import { EventDetailComponent } from './pages/event-detail/event-detail.component';
+import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 
 const routes: Routes = [
   // { path: '', component: HomeScreenComponent },
@@ -48,6 +49,9 @@ const routes: Routes = [
   {
     path: 'shrine', component: ShrinesScreenComponent
   },
+  {
+    path: 'profile', component: ProfileScreenComponent
+  },
   { path: 'profile/:username', component: ProfileComponent },
   {
     path: 'event', component: EventsScreenComponent
@@ -66,6 +70,9 @@ const routes: Routes = [
   },
   {
     path: 'work/:slug', component: WorkComponent
+  },
+  {
+    path: 'event/:slug', component: EventDetailComponent
   }
 ];
 

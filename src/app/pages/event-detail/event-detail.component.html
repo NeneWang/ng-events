@@ -1,0 +1,27 @@
+
+<div class="button-container">
+    <button class="btn-action">
+      Join  <i class="heart-icon">&#9825;</i>
+    </button>
+</div>
+<div *ngIf="event_data" class="profile-container">
+    <div class="profile-header">
+      <img [src]="event_data.image" alt="Profile Image" class="profile-image">
+      <div class="profile-info">
+        <h1>{{ event_data.image }}</h1>
+        <p>{{ event_data.description }}</p>
+        <div class="profile-tags">
+          <span *ngFor="let tag of event_data.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="profile-projects">
+      <!-- <div *ngFor="let project of profile.projects" class="project-card">
+        <img [src]="project.image" alt="{{ project.title }}">
+        <p>{{ project.title }}</p>
+      </div> -->
+      <!-- <div *ngIf="event_data.show_submissions">
+          <app-content-bloc [initialItems]="projects" [initialTags]="[]"></app-content-bloc>
+      </div> -->
+    </div>
+  </div>

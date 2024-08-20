@@ -44,6 +44,8 @@ import { NgxMatDatetimePickerModule, NgxMatTimepickerModule } from '@angular-mat
 import { ArtshowService } from './services/artshow.service';
 import { WorkComponent } from './pages/work/work.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import { EventDetailComponent } from './pages/event-detail/event-detail.component';
+import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
 
 
 @NgModule({
@@ -68,6 +70,8 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
     PublishShrineComponent,
     UploadComponent,
     WorkComponent,
+    EventDetailComponent,
+    ProfileScreenComponent,
     
   ],
   imports: [

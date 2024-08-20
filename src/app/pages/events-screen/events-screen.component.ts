@@ -31,7 +31,8 @@ const mockEventsData = [
       new Date('2024-01-15').getTime(),
       new Date('2024-01-20').getTime()
     ],
-    fillColor: '#008FFB'
+    fillColor: '#008FFB',
+    img: ""
   },
   {
     title: 'Abstract Art',
@@ -40,7 +41,9 @@ const mockEventsData = [
       new Date('2024-02-05').getTime(),
       new Date('2024-02-10').getTime()
     ],
-    fillColor: '#00E396'
+    fillColor: '#00E396',
+    img: ""
+
   },
   {
     title: 'Sculpture Exhibition',
@@ -49,7 +52,8 @@ const mockEventsData = [
       new Date('2024-03-01').getTime(),
       new Date('2024-03-05').getTime()
     ],
-    fillColor: '#775DD0'
+    fillColor: '#775DD0',
+    img: ""
   },
   {
     title: 'Digital Art Show',
@@ -58,7 +62,8 @@ const mockEventsData = [
       new Date('2024-03-10').getTime(),
       new Date('2024-03-15').getTime()
     ],
-    fillColor: '#FEB019'
+    fillColor: '#FEB019',
+    img: ""
   },
   {
     title: 'Photography Exhibition',
@@ -67,7 +72,8 @@ const mockEventsData = [
       new Date('2024-04-01').getTime(),
       new Date('2024-04-07').getTime()
     ],
-    fillColor: '#FF4560'
+    fillColor: '#FF4560',
+    img: ""
   }
 ];
 

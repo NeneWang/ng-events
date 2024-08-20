@@ -18,7 +18,7 @@ export class HostComponent {
   selectedFile: File | null = null;
   uploadProgress = 0;
   uploadMessage = '';
-  submission_link = '';
+  image_link = '';
 
   showOtherField = false;
   http: any;
@@ -41,6 +41,8 @@ export class HostComponent {
     }),
     otherMedium: [''],
     poster_link: [''],
+    
+    
     start_date: [new Date().toISOString(), Validators.required],
     end_date: [new Date().toISOString(), Validators.required],
   });
@@ -130,13 +132,14 @@ export class HostComponent {
         title: submissionContent.title,
         creator: this.account_email,
         creator_slug: this.account_email,
-        image: submissionContent.poster_link,
+        image: this.image_link,
         tags: [],
         description: submissionContent.description,
         date: submissionContent.start_date,
         significant_views: 0,
         start_date: submissionContent.start_date,
         end_date: submissionContent.end_date,
+        additional_url: submissionContent.poster_link,
       };
 
       console.log('submission data', submissionData);
@@ -169,10 +172,8 @@ export class HostComponent {
               ? `File uploaded: ${event.filename}`
               : 'Upload complete';
             if (event.url && event.url.length > 1) {
-              this.form.patchValue({
-                submission_link: event.url,
-              });
-              this.submission_link = event.url;
+              
+              this.image_link = event.url;
             }
           }
         },
@@ -188,6 +189,6 @@ export class HostComponent {
     this.selectedFile = null;
     this.uploadProgress = 0;
     this.uploadMessage = '';
-    this.submission_link = '';
+    this.image_link = '';
   }
 }

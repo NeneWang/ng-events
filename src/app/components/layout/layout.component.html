@@ -9,10 +9,8 @@
         <a mat-line routerLink="/">Home</a>
       </mat-nav-list>
 
-      <button mat-button routerLink="/event" >Events</button>
-      <button mat-button routerLink="/vlog" >Vlogs</button>
-      <button mat-button routerLink="/shrine" >Shrines</button>
-
+      <button mat-button routerLink="/event">Events</button>
+      <button mat-button routerLink="/shrine">Galleries</button>
       <button mat-button routerLink="/about">About</button>
 
       <input
@@ -30,7 +28,7 @@
         Login
       </button>
       <div *ngIf="isLoggedIn()">
-        <span>{{ getAuthName() }}</span>
+        <a routerLink="/profile">{{ getAuthName() }}</a>
         <button mat-button routerLink="/auth/logout" (click)="logout()">
           Logout
         </button>

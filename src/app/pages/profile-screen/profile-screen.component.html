@@ -1,0 +1,25 @@
+<div class="button-container">
+    <button class="btn-action">
+        Edit Profile
+    </button>
+</div>
+<div *ngIf="profile" class="profile-container">
+    <div class="profile-header">
+      <img [src]="profile.projects[0].image" alt="Profile Image" class="profile-image">
+      <div class="profile-info">
+        <h1>{{ profile.name }}</h1>
+        <p>{{ profile.description }}</p>
+        <div class="social-links">
+          <span *ngFor="let social of profile.social">
+            <a [href]="social.url" target="_blank">{{ social.name }}</a> |
+          </span>
+        </div>
+        <div class="profile-tags">
+          <span *ngFor="let tag of profile.tags">{{ tag }}</span>
+        </div>
+      </div>
+    </div>
+    <div class="profile-projects">
+      <app-content-bloc [initialItems]="profile.projects" [initialTags]="[]"></app-content-bloc>
+    </div>
+</div>
