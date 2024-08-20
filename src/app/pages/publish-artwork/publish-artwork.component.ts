@@ -1,7 +1,7 @@
 import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
-import { FormBuilder, FormGroup, FormControl } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
@@ -24,10 +24,11 @@ export class PublishArtworkComponent implements OnInit {
   http: any;
   account_email = "";
   post_file_url = environment.baseUrl + '/upload';
+  upload_succeeded = false;
 
 
   form: FormGroup = this.fb.group({
-    titleOfWork: [''],
+    titleOfWork: ['', Validators.required],
     mediums: this.fb.group({
       Photography: [false],
       Painting: [false],
@@ -41,7 +42,7 @@ export class PublishArtworkComponent implements OnInit {
       Other: [false],
     }),
     otherMedium: [''],
-    artistStatement: [''],
+    artistStatement: ['', Validators.required],
     submission_link: ['']
   });
 
@@ -94,6 +95,7 @@ export class PublishArtworkComponent implements OnInit {
 
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
+    this.onUpload()
   }
 
   submit(): void{

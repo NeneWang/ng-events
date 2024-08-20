@@ -1,3 +1,4 @@
+import { ArtshowService } from './../../services/artshow.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 
@@ -9,9 +10,15 @@ import { ActivatedRoute } from '@angular/router';
 export class ProfileScreenComponent {
 
   isEditMode = false;
+  selectedFile: File | null = null;
+  uploadProgress = 0;
+  uploadMessage = '';
+  image_link = '';
+  
   profile = {
     username: 'toriyaki-honmyo',
     name: 'Toriyaki Honmyo',
+    image_url: "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
     description: 'Is not easy to communicate with others, but his love of drawing many lines and faces is increasing, to create a unique view of the world.',
     social: [
       { name: 'LinkedIn', url: 'https://www.linkedin.com/in/toriyaki-honmyo/' },
@@ -49,9 +56,42 @@ export class ProfileScreenComponent {
     this.isEditMode = !this.isEditMode;
   }
 
-  constructor( private route: ActivatedRoute){
 
+  onFileSelected(event: any): void {
+    this.selectedFile = event.target.files[0];
+    this.onUpload();
   }
+
+
+  constructor( private route: ActivatedRoute, private artshowService: ArtshowService){
+    
+  }
+
+  onUpload(): void {
+    if (this.selectedFile) {
+      this.artshowService.upload(this.selectedFile).subscribe(
+        (event: any) => {
+          if (event.status === 'progress') {
+            this.uploadProgress = event.message;
+          } else {
+            this.uploadMessage = event.filename
+              ? `File uploaded: ${event.filename}`
+              : 'Upload complete';
+            if (event.url && event.url.length > 1) {
+              
+              this.image_link = event.url;
+            }
+          }
+        },
+        (error: any) => {
+          this.uploadMessage = 'File upload failed!';
+          console.error(error);
+        }
+      );
+    }
+  }
+
+
 
 
 }

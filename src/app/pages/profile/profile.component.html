@@ -19,10 +19,7 @@
       </div>
     </div>
     <div class="profile-projects">
-      <!-- <div *ngFor="let project of profile.projects" class="project-card">
-        <img [src]="project.image" alt="{{ project.title }}">
-        <p>{{ project.title }}</p>
-      </div> -->
+      
       <app-content-bloc [initialItems]="profile.projects" [initialTags]="[]"></app-content-bloc>
     </div>
   </div>

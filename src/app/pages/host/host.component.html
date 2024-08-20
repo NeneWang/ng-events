@@ -2,7 +2,7 @@
   <form [formGroup]="form">
     <div>
       <br />
-      <mat-form-field appearance="outline" class="full-width">
+      <mat-form-field appearance="outline" class="mid-width">
         <mat-label>Title of Event</mat-label>
         <input formControlName="title" matInput type="text" class="input-height" />
         <mat-error *ngIf="form.get('title')?.hasError('required')">
