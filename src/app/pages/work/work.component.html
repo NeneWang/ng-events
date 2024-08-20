@@ -1,4 +1,5 @@
-<div class="button-container">
+
+<div *ngIf="work.isAuthor" class="button-container">
   <button
     class="btn-action btn-favorite"
     [ngClass]="{ favorited: isFavorited }"
@@ -8,18 +9,80 @@
     <i class="heart-icon" [ngClass]="{ favorited: isFavorited }">&#9825;</i>
   </button>
 </div>
-<div *ngIf="work" class="profile-container">
-  <div class="profile-header">
-    <div class="profile-info">
-      <h1>{{ work.title }}</h1>
-      <br />
-      <div *ngIf="work.image">
-        <img [src]="work.image" alt="Profile Image" class="profile-image" />
-      </div>
-      <br />
-      <p>{{ work.description }}</p>
 
-      <div></div>
+
+<div *ngIf="!work.isAuthor" class="button-container">
+  <button
+    class="btn-action btn-favorite"
+    (click)="toggleEdit()"
+  >
+    <span *ngIf="!edit_work" >Edit</span>
+    <span *ngIf="edit_work" >Save</span>
+  </button>
+
+  <button
+    class="btn-action btn-favorite ml-2"
+    [ngClass]="{ favorited: isFavorited }"
+    (click)="onDelete()"
+    style="margin-left: 1em;"
+  >
+    Delete
+  </button>
+</div>
+
+
+<div *ngIf="!edit_work">
+
+  <div *ngIf="work" class="profile-container">
+    <div class="profile-header">
+      <div class="profile-info">
+        <h1>{{ work.title }}</h1>
+        <br />
+        <div *ngIf="work.image">
+          <img [src]="work.image" alt="Profile Image" class="profile-image" />
+        </div>
+        <br />
+        <p>{{ work.description }}</p>
+        
+        <div></div>
+      </div>
     </div>
   </div>
+  
 </div>
+
+<div *ngIf="edit_work">
+
+  <div *ngIf="work" class="profile-container">
+    <div class="profile-header">
+      <div class="profile-info">
+        <mat-label>Title</mat-label>
+        <input
+          type="text"
+          [(ngModel)]="work.title"
+          placeholder="Enter Name"
+          class="full-width"
+        />
+        <br />
+        <div *ngIf="work.image">
+          <img [src]="work.image" alt="Profile Image" class="profile-image" />
+        </div>
+        <br />
+        <mat-label>Description</mat-label>
+        <input
+          type="text"
+          [(ngModel)]="work.description"
+          placeholder="Enter Name"
+          class="full-width"
+        />
+        
+        <div></div>
+      </div>
+    </div>
+  </div>
+  
+
+</div>
+
+
+

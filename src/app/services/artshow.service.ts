@@ -90,6 +90,7 @@ export class ArtshowService {
 
   getArtwork(slug: string, email:string | undefined): Observable<any> {
     if (email){
+      // So it returns if there is the permission for using it or not.
       return this.http.get(environment.baseUrl + '/artwork/' + slug + '?user_email=' + email);
     }
     return this.http.get(environment.baseUrl + '/artwork/' + slug);
@@ -124,6 +125,18 @@ export class ArtshowService {
   getProfileBySlug(slug_name: string): Observable<any>{
     return this.http.get(environment.baseUrl + `/profile/${slug_name}`)
   }
+
+  deleteWorkBySlug(slug: string): Observable<any>{
+    return this.http.delete(environment.baseUrl + `/work/${slug}`)
+
+  }
+
+
+  
+
+
+
+  
 
   
 }

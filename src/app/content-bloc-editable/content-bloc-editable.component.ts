@@ -78,4 +78,6 @@ export class ContentBlocEditableComponent implements OnChanges {
       tag.toLowerCase().includes(searchTerm)
     );
   }
+
+
 }

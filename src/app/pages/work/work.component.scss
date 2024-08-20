@@ -49,3 +49,13 @@
 .btn-favorite.favorited:hover {
     background-color: #ffd5d9;
 }
+
+
+
+.full-width {
+    width: 100%;
+    box-sizing: border-box; /* Ensures padding and borders are included in the width */
+    padding: 10px; /* Optional: adds some padding inside the input */
+    margin-bottom: 10px; /* Optional: adds space between the inputs */
+    font-size: 1em; /* Optional: ensures the text size is consistent */
+}

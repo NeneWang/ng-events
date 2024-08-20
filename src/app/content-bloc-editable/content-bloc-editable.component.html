@@ -1,58 +1,61 @@
-
 <div>
-    <div class="tags-list" *ngIf="initialTags.length > 0">
-      <div class="search-tags favorite-artists">
-        <mat-icon class="separated-icon">label_outline</mat-icon>
-        <input
-          matInput
-          placeholder="Search Tags"
-          class="center-placeholder"
-          (keyup)="searchTags($event)"
-        />
-      </div>
-      <span
-        *ngFor="let tag of filteredTags"
-        (click)="toggleTag(tag)"
-        (keydown)="onTagKeydown($event, tag)"
-        [class.selected]="selectedTags.includes(tag)"
-        tabindex="0"
-        role="button"
-      >
-        {{ tag }}
-      </span>
+  <div class="tags-list" *ngIf="initialTags.length > 0">
+    <div class="search-tags favorite-artists">
+      <mat-icon class="separated-icon">label_outline</mat-icon>
+      <input
+        matInput
+        placeholder="Search Tags"
+        class="center-placeholder"
+        (keyup)="searchTags($event)"
+      />
     </div>
-  
-    <div class="items-list">
-      <mat-card *ngFor="let item of filteredItems" class="item" [routerLink]="['/work', item.slug]">
+    <span
+      *ngFor="let tag of filteredTags"
+      (click)="toggleTag(tag)"
+      (keydown)="onTagKeydown($event, tag)"
+      [class.selected]="selectedTags.includes(tag)"
+      tabindex="0"
+      role="button"
+    >
+      {{ tag }}
+    </span>
+  </div>
+
+  <div class="items-list">
+    <div *ngFor="let item of filteredItems">
+      <mat-card class="item" [routerLink]="['/work', item.slug]">
         <img mat-card-image [src]="item.image" alt="{{ item.title }}" />
         <mat-card-content>
           <h3>{{ item.title }}</h3>
-          <a [routerLink]="['/profile', item.creator_slug]">{{ item.creator }}</a>
+          <a [routerLink]="['/profile', item.creator_slug]">{{
+            item.creator
+          }}</a>
           <mat-chip-set aria-label="Fish selection">
             <mat-chip *ngFor="let tag of item.tags" class="mat-mdc-chip">
               {{ tag }}
             </mat-chip>
           </mat-chip-set>
+          <p class="just-left">
+            {{ item.description | wordLimit : 20 }}
+          </p>
         </mat-card-content>
-    
-        <p class="just-left">
-          {{ item.description | wordLimit: 20 }}
-        </p>
-      </mat-card>
-  
-      <mat-card  class="item" [routerLink]="['/publish-artwork']">
-        <!-- <img mat-card-image [src]="item.image" alt="{{ item.title }}" /> -->
-        <mat-card-content>
-          <h3>Create Artwork</h3>
-          <mat-chip-set aria-label="Fish selection">
-          </mat-chip-set>
-        </mat-card-content>
-    
-        <p class="just-left">
-          <!-- {{ item.description | wordLimit: 20 }} -->
-        </p>
+        <!-- <mat-card-actions>
+          <button mat-icon-button (click)="editItem(item)">
+            <mat-icon>edit</mat-icon>
+          </button>
+          <button mat-icon-button color="warn" (click)="deleteItem(item)">
+            <mat-icon>delete</mat-icon>
+          </button>
+        </mat-card-actions> -->
       </mat-card>
     </div>
-    
+
+    <mat-card class="item" [routerLink]="['/publish-artwork']">
+      <mat-card-content>
+        <h3>Create Artwork</h3>
+        <mat-chip-set aria-label="Fish selection"></mat-chip-set>
+      </mat-card-content>
+      <p class="just-left"></p>
+    </mat-card>
   </div>
-  
+</div>

@@ -1,7 +1,8 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, inject, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArtshowService } from 'src/app/services/artshow.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 
@@ -11,13 +12,19 @@ import { ArtshowService } from 'src/app/services/artshow.service';
   styleUrls: ['./work.component.scss']
 })
 export class WorkComponent {
+  private _snackBar = inject(MatSnackBar);
   work: any;
   isFavorited = false;
   user_email: string | undefined;
+  slug: string;
+  edit_work = false;
+  
 
-  constructor(private route: ActivatedRoute, private artshowService: ArtshowService, private AuthService: AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, private artshowService: ArtshowService, private AuthService: AuthService) {
     this.user_email = this.AuthService.getUserEmail();
-    const workData = this.artshowService.getArtwork(this.route.snapshot.params['slug'], this.user_email);
+    this.slug = route.snapshot.params['slug'];
+    
+    const workData = this.artshowService.getArtwork(this.slug, this.user_email);
     workData.subscribe((data) => {
       this.work = data;
       console.log('Work data', this.work);
@@ -42,6 +49,20 @@ export class WorkComponent {
       },
     });
 
+  }
+
+
+  toggleEdit(): void{
+    this.edit_work = !this.edit_work;
+  }
+
+  onDelete(): void{
+    this.artshowService.deleteWorkBySlug(this.slug).subscribe({
+      next: (response) => {
+        this._snackBar.open('Deleted successfully', 'close')
+        this.router.navigate(['/profile'])
+      }
+    });
   }
 
 }
