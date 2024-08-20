@@ -76,9 +76,8 @@
         Description is required
       </mat-error>
 
-
       <!-- <app-upload /> -->
-       <br>
+      <br />
       <h5>Artwork</h5>
       <div>
         <input type="file" (change)="onFileSelected($event)" />
@@ -116,4 +115,18 @@
       <button type="button" (click)="submit()">Submit</button>
     </div>
   </form>
+</div>
+
+<div *ngIf="upload_succeeded">
+  <h1>Upload Success</h1>
+  <p>Title: {{ form.get("titleOfWork")?.value }}</p>
+  <p>Description: {{ form.get("artistStatement")?.value }}</p>
+  <p *ngIf="form.get('submission_link')?.value">
+    Additional Forms: {{ form.get("submission_link")?.value }}
+  </p>
+  <p>Mediums: {{ form.get("mediums")?.value?.join(", ") }}</p>
+
+  <br />
+  <br />
+  <button routerLink="/event">Go to Events Page</button>
 </div>

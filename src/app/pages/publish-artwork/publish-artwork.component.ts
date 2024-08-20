@@ -1,11 +1,12 @@
 import { Router } from '@angular/router';
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { map, Observable } from 'rxjs';
 import { HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { environment } from 'src/environments/environment.local';
 import { ArtshowService } from 'src/app/services/artshow.service';
+import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 
 
 @Component({
@@ -14,12 +15,12 @@ import { ArtshowService } from 'src/app/services/artshow.service';
   styleUrls: ['./publish-artwork.component.scss']
 })
 export class PublishArtworkComponent implements OnInit {
-
+  private _snackBar = inject(MatSnackBar);
   selectedFile: File | null = null;
   uploadProgress = 0;
   uploadMessage = '';
   submission_link = '';
-  
+
   showOtherField = false;
   http: any;
   account_email = "";
@@ -52,7 +53,7 @@ export class PublishArtworkComponent implements OnInit {
       this.authService.logout();
       // Redirect
       this.router.navigate(['/auth/login']);
-    }else{
+    } else {
       this.account_email = localStorage.getItem('email')!;
     }
   }
@@ -98,8 +99,18 @@ export class PublishArtworkComponent implements OnInit {
     this.onUpload()
   }
 
-  submit(): void{
-    if(this.form.valid){
+
+  openSnackBar(message: string, action: string) {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.panelClass = ['custom-snackbar'];
+
+    this._snackBar.open(message, action, config);
+  }
+
+  submit(): void {
+    if (this.form.valid) {
       // console.log("Submitting the form:")
       // console.log(this.form.value);
       const submissionContent = this.form.value;
@@ -110,11 +121,15 @@ export class PublishArtworkComponent implements OnInit {
         next: (response) => {
           console.log('Artwork published', response);
           this.router.navigate(['/']);
+          this.openSnackBar("Artwork Published", 'Close')
         },
         error: (error) => {
           console.error('Artwork publish error', error);
+          this.openSnackBar("Error publishing artwork", 'Close')
         }
       });
+    }else{
+      this.openSnackBar("Form is Invalid", 'Close')
     }
   }
 
@@ -128,7 +143,7 @@ export class PublishArtworkComponent implements OnInit {
             this.uploadMessage = event.filename ? `File uploaded: ${event.filename}` : 'Upload complete';
             if (event.url && event.url.length > 1) {
               // this.form.submission_link = event.url;
-              console.log("Setting submission link to", event.url, 'from', this.form.get('submission_link')?.value);
+              // console.log("Setting submission link to", event.url, 'from', this.form.get('submission_link')?.value);
               this.form.patchValue({
                 submission_link: event.url
               });
