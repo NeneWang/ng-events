@@ -5,111 +5,119 @@
   </button>
 </div>
 
-<div *ngIf="!isEditMode" class="profile-container">
-  <div class="profile-header">
-    <img
-      [src]="profile.projects[0].image"
-      alt="Profile Image"
-      class="profile-image"
-    />
-
-    <div class="profile-info">
-      <h1>{{ profile.name }}</h1>
-      <p>{{ profile.description }}</p>
-      <div class="social-links">
-        <span *ngFor="let social of profile.social">
-          <a [href]="social.url" target="_blank">{{ social.name }}</a> |
-        </span>
-      </div>
-      <div class="profile-tags">
-        <span *ngFor="let tag of profile.tags">{{ tag }}</span>
-      </div>
-    </div>
-  </div>
-  <div class="profile-projects">
-    
-    <app-content-bloc-editable
-      [initialItems]="profile.projects"
-      [initialTags]="[]"
-    >
-    </app-content-bloc-editable>
-  </div>
-</div>
-
-<div *ngIf="isEditMode" class="profile-container">
-  <div class="profile-header">
-    <div>
+<div *ngIf="profile_loaded">
+  <div *ngIf="!isEditMode" class="profile-container">
+    <div class="profile-header">
       <img
         [src]="profile.projects[0].image"
         alt="Profile Image"
         class="profile-image"
       />
+
+      <div class="profile-info">
+        <h1>{{ profile.name }}</h1>
+        <p>{{ profile.description }}</p>
+        <div class="social-links">
+          <span *ngFor="let social of profile.social">
+            <a [href]="social.url" target="_blank">{{ social.name }}</a> |
+          </span>
+        </div>
+        <div class="profile-tags">
+          <span *ngFor="let tag of profile.tags">{{ tag }}</span>
+        </div>
+      </div>
     </div>
-    <div class="profile-info">
-
-
-      <mat-label>Image</mat-label>
-      <input type="text" type="text" [(ngModel)]="profile.image_url" placeholder="image url..." class="full-width" >
-      <input type="file" (change)="onFileSelected($event)" />
-
-      <br>
-      <br>
-      <mat-label>Profile</mat-label>
-      <input
-        type="text"
-        [(ngModel)]="profile.name"
-        placeholder="Enter Name"
-        class="full-width"
-      />
-
-      <mat-label>Biography</mat-label>
-      <textarea
-        [(ngModel)]="profile.description"
-        placeholder="Enter Description"
-        class="full-width"
-      ></textarea>
-      <br />
-      <br />
-      <mat-label>Socials</mat-label>
-      <div class="social-links">
-        <div *ngFor="let social of profile.social; let i = index">
-          <input
-            type="text"
-            [(ngModel)]="profile.social[i].name"
-            placeholder="Social Name"
-            class="full-width"
-          />
-          <input
-            type="text"
-            [(ngModel)]="profile.social[i].url"
-            placeholder="Social URL"
-            class="full-width"
-          />
-          <br />
-          <br />
-        </div>
-      </div>
-      <br />
-      <div>Tags</div>
-      <div class="profile-tags">
-        <div *ngFor="let tag of profile.tags; let i = index">
-          <input
-            type="text"
-            [(ngModel)]="profile.tags[i]"
-            placeholder="Tag"
-            class="full-width"
-          />
-        </div>
-      </div>
+    <div class="profile-projects">
+      <app-content-bloc-editable
+        [initialItems]="profile.projects"
+        [initialTags]="[]"
+      >
+      </app-content-bloc-editable>
     </div>
   </div>
-  <br />
-  <!-- <div>Projects</div> -->
-  <div class="profile-projects">
-    <!-- <app-content-bloc
+
+  <div *ngIf="isEditMode" class="profile-container">
+    <div class="profile-header">
+      <div>
+        <img
+          [src]="profile.projects[0].image"
+          alt="Profile Image"
+          class="profile-image"
+        />
+      </div>
+      <div class="profile-info">
+        <mat-label>Image</mat-label>
+        <input
+          type="text"
+          type="text"
+          [(ngModel)]="profile.image_url"
+          placeholder="image url..."
+          class="full-width"
+        />
+        <input type="file" (change)="onFileSelected($event)" />
+
+        <br />
+        <br />
+        <mat-label>Profile</mat-label>
+        <input
+          type="text"
+          [(ngModel)]="profile.name"
+          placeholder="Enter Name"
+          class="full-width"
+        />
+
+        <mat-label>Biography</mat-label>
+        <textarea
+          [(ngModel)]="profile.description"
+          placeholder="Enter Description"
+          class="full-width"
+        ></textarea>
+        <br />
+        <br />
+        <mat-label>Socials</mat-label>
+        <div class="social-links">
+          <div *ngFor="let social of profile.social; let i = index">
+            <input
+              type="text"
+              [(ngModel)]="profile.social[i].name"
+              placeholder="Social Name"
+              class="full-width"
+            />
+            <input
+              type="text"
+              [(ngModel)]="profile.social[i].url"
+              placeholder="Social URL"
+              class="full-width"
+            />
+            <br />
+            <br />
+          </div>
+        </div>
+        <br />
+        <div>Tags</div>
+        <div class="profile-tags">
+          <div *ngFor="let tag of profile.tags; let i = index">
+            <input
+              type="text"
+              [(ngModel)]="profile.tags[i]"
+              placeholder="Tag"
+              class="full-width"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+    <br />
+    <!-- <div>Projects</div> -->
+    <div class="profile-projects">
+      <!-- <app-content-bloc
       [initialItems]="profile.projects"
       [initialTags]="[]"
     ></app-content-bloc> -->
-
+    </div>
   </div>
+</div>
+
+<div *ngIf="!profile_loaded">
+    <p>Loading profile...</p>
 </div>

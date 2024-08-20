@@ -11,7 +11,9 @@
         <h1>{{ profile.name }}</h1>
         <p>{{ profile.description }}</p>
         <div class="social-links">
-          <span *ngFor="let social of profile.social">{{ social }} | </span>
+          <span *ngFor="let social of profile.social">
+            <a [href]="social.url" target="_blank">{{ social.name }}</a> |
+          </span>
         </div>
         <div class="profile-tags">
           <span *ngFor="let tag of profile.tags">{{ tag }}</span>

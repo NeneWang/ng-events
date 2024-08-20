@@ -15,6 +15,7 @@ export class ExploreScreenComponent implements OnInit {
   initial_items = []
   favoritedArtistItems = []
   user_email = ""
+  loading = true;
 
 
 
@@ -37,11 +38,13 @@ export class ExploreScreenComponent implements OnInit {
     exploreArtwork.subscribe((data) => {
       this.initial_items = data;
       this.cdr.detectChanges(); // Force change detection
+      this.loading = false;
     });
 
     favoritedArtwork.subscribe((data) => {
       this.favoritedArtistItems = data;
       this.cdr.detectChanges(); // Force change detection
+      this.loading = false;
     });
   }
 

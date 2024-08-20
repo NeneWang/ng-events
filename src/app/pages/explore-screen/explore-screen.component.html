@@ -4,25 +4,29 @@
   </button>
 </div>
 
-<p>Explore</p>
+<p *ngIf="loading">Loading...</p>
 
-<div class="explore-container">
-  <p>Explore artworks and Web Shrines:</p>
+<div *ngIf="!loading">
+  <p>Explore</p>
+
+  <div class="explore-container">
+    <p>Explore artworks and Web Shrines:</p>
+  </div>
+
+  <app-content-bloc
+    [initialItems]="initial_items"
+    [initialTags]="tags_initial"
+  ></app-content-bloc>
+
+  <br />
+
+  <div class="favorite-artists">
+    <mat-icon class="separated-icon">favorite_border</mat-icon>
+    <p>By your Favorite Artists</p>
+  </div>
+
+  <app-content-bloc
+    [initialItems]="favoritedArtistItems"
+    [initialTags]="[]"
+  ></app-content-bloc>
 </div>
-
-<app-content-bloc
-  [initialItems]="initial_items"
-  [initialTags]="tags_initial"
-></app-content-bloc>
-
-<br />
-
-<div class="favorite-artists">
-  <mat-icon class="separated-icon">favorite_border</mat-icon>
-  <p>By your Favorite Artists</p>
-</div>
-
-<app-content-bloc
-  [initialItems]="favoritedArtistItems"
-  [initialTags]="[]"
-></app-content-bloc>

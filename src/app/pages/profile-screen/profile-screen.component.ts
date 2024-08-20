@@ -1,6 +1,7 @@
 import { ArtshowService } from './../../services/artshow.service';
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { AuthService } from 'src/app/services/auth.service';
 
 @Component({
   selector: 'app-profile-screen',
@@ -14,7 +15,7 @@ export class ProfileScreenComponent {
   uploadProgress = 0;
   uploadMessage = '';
   image_link = '';
-  
+  profile_loaded = false;
   profile = {
     username: 'toriyaki-honmyo',
     name: 'Toriyaki Honmyo',
@@ -52,6 +53,8 @@ export class ProfileScreenComponent {
     ]
   };
 
+  
+
   toggleEditMode(){
     this.isEditMode = !this.isEditMode;
   }
@@ -63,8 +66,17 @@ export class ProfileScreenComponent {
   }
 
 
-  constructor( private route: ActivatedRoute, private artshowService: ArtshowService){
-    
+  constructor( private route: ActivatedRoute, private artshowService: ArtshowService, private authService: AuthService){
+    const useremail = this.authService.getUserEmail();
+    console.log('user email =>', useremail)
+    const profileData = this.artshowService.getProfileByEmail(useremail as string);
+    profileData.subscribe((data) => {
+      if (data){
+        this.profile_loaded = true;
+      } 
+      this.profile = data;
+
+    })
   }
 
   onUpload(): void {

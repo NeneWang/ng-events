@@ -52,7 +52,7 @@ const routes: Routes = [
   {
     path: 'profile', component: ProfileScreenComponent
   },
-  { path: 'profile/:username', component: ProfileComponent },
+  { path: 'profile/:slug', component: ProfileComponent },
   {
     path: 'event', component: EventsScreenComponent
   },

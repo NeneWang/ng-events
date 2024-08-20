@@ -82,6 +82,8 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/artwork', artwork);
   }
 
+  
+
   getExploreArtworks(): Observable<any> {
     return this.http.get(environment.baseUrl + '/artwork');
   }
@@ -114,5 +116,14 @@ export class ArtshowService {
   getFavoritedArtworks(email: string): Observable<any> {
     return this.http.get(environment.baseUrl + '/favorites?user_email=' + email);
   }
+
+  getProfileByEmail(email: string): Observable<any>{
+    return this.http.get(environment.baseUrl + `/profile?email=${email}`)
+  }
+
+  getProfileBySlug(slug_name: string): Observable<any>{
+    return this.http.get(environment.baseUrl + `/profile/${slug_name}`)
+  }
+
   
 }
