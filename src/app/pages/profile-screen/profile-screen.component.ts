@@ -8,6 +8,7 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class ProfileScreenComponent {
 
+  isEditMode = false;
   profile = {
     username: 'toriyaki-honmyo',
     name: 'Toriyaki Honmyo',
@@ -44,8 +45,13 @@ export class ProfileScreenComponent {
     ]
   };
 
-  constructor( private route: ActivatedRoute
-  ){}
+  toggleEditMode(){
+    this.isEditMode = !this.isEditMode;
+  }
+
+  constructor( private route: ActivatedRoute){
+
+  }
 
 
 }
