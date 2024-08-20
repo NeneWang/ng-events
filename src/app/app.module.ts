@@ -46,6 +46,7 @@ import { WorkComponent } from './pages/work/work.component';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
 import { EventDetailComponent } from './pages/event-detail/event-detail.component';
 import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.component';
+import { ContentBlocEditableComponent } from './content-bloc-editable/content-bloc-editable.component';
 
 
 @NgModule({
@@ -72,6 +73,7 @@ import { ProfileScreenComponent } from './pages/profile-screen/profile-screen.co
     WorkComponent,
     EventDetailComponent,
     ProfileScreenComponent,
+    ContentBlocEditableComponent,
     
   ],
   imports: [

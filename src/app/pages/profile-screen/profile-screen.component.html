@@ -41,19 +41,23 @@
       class="profile-image"
     />
     <div class="profile-info">
+      <mat-label>Profile</mat-label>
       <input
         type="text"
         [(ngModel)]="profile.name"
         placeholder="Enter Name"
         class="full-width"
       />
+
+      <mat-label>Biography</mat-label>
       <textarea
         [(ngModel)]="profile.description"
         placeholder="Enter Description"
         class="full-width"
       ></textarea>
       <br />
-      <div>Socials</div>
+      <br />
+      <mat-label>Socials</mat-label>
       <div class="social-links">
         <div *ngFor="let social of profile.social; let i = index">
           <input
@@ -68,6 +72,8 @@
             placeholder="Social URL"
             class="full-width"
           />
+          <br />
+          <br />
         </div>
       </div>
       <br />
@@ -84,11 +90,17 @@
       </div>
     </div>
   </div>
-
+  <br />
+  <div>Projects</div>
   <div class="profile-projects">
-    <app-content-bloc
+    <!-- <app-content-bloc
       [initialItems]="profile.projects"
       [initialTags]="[]"
-    ></app-content-bloc>
+    ></app-content-bloc> -->
+
+    <app-content-bloc-editable
+      [initialItems]="profile.projects"
+      [initialTags]="[]">
+    </app-content-bloc-editable>
   </div>
 </div>
