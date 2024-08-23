@@ -40,7 +40,7 @@
 </div>
 
 <br />
-<div id="chart">
+<div id="chart" *ngIf="events.length > 0">
   <!-- <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart" [xaxis]="chartOptions.xaxis" [dataLabels]="chartOptions.dataLabels" [title]="chartOptions.title"></apx-chart> -->
   <apx-chart
     [series]="chartOptions.series || []"
