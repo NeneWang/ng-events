@@ -1,4 +1,4 @@
-import { MatCheckbox, MatCheckboxModule } from '@angular/material/checkbox';
+import { MatCheckboxModule } from '@angular/material/checkbox';
 import { StudentManagementModule } from './student-management/student-management.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
