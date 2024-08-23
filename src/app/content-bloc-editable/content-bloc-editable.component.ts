@@ -25,6 +25,7 @@ interface Item {
 export class ContentBlocEditableComponent implements OnChanges {
   @Input() initialItems: Item[] = [];
   @Input() initialTags: string[] = [];
+  @Input() additional_event_parameters = '';
 
   selectedTags: string[] = [];
   filteredTags: string[] = [];

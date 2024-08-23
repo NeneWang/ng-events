@@ -148,7 +148,7 @@ export class ArtshowService {
   // async def join_event(competitionslug: str, user_email: str):
 
   toggleJoinEvent(slug: string, email: string): Observable<any> {
-    return this.http.post(environment.baseUrl + '/event/join/' + slug, { user_email: email });
+    return this.http.get(environment.baseUrl + '/event/join/' + slug + '?user_email=' + email);
   }
 
 

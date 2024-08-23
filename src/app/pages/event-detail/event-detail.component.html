@@ -1,32 +1,37 @@
-
 <div class="button-container">
-    <button class="btn-action" (click)="togglejoinEvent()">
-
-      <span *ngIf="!is_participant" >Join  <i class="heart-icon">&#9825;</i></span>
-      <span *ngIf="is_participant" >Leave 
-        
-      </span>
-
-    </button>
+  <button class="btn-action" (click)="togglejoinEvent()">
+    <span *ngIf="!is_participant">Join <i class="heart-icon">&#9825;</i></span>
+    <span *ngIf="is_participant">Leave </span>
+  </button>
 </div>
 <div *ngIf="event_data" class="profile-container">
-    <div class="profile-header">
-      <img [src]="event_data.image" alt="Profile Image" class="profile-image">
-      <div class="profile-info">
-        <h1>{{event_data.title}}</h1>
-        <p>{{ event_data.description }}</p>
-        <div class="profile-tags">
-          <span *ngFor="let tag of event_data.tags">{{ tag }}</span>
-        </div>
-      </div>
-    </div>
-    <div class="profile-projects">
-
-      <div class="profile-projects">
-        <app-content-bloc
-          [initialItems]="event_data.projects"
-          [initialTags]="[]"
-        ></app-content-bloc>
+  <div class="profile-header">
+    <img [src]="event_data.image" alt="Profile Image" class="profile-image" />
+    <div class="profile-info">
+      <h1>{{ event_data.title }}</h1>
+      <p>{{ event_data.description }}</p>
+      <div class="profile-tags">
+        <span *ngFor="let tag of event_data.tags">{{ tag }}</span>
       </div>
     </div>
   </div>
+
+  <div class="profile-projects" *ngIf="!is_participant">
+    <div class="profile-projects">
+      <app-content-bloc
+        [initialItems]="event_data.projects"
+        [initialTags]="[]"
+      ></app-content-bloc>
+    </div>
+  </div>
+
+  <div class="profile-projects" *ngIf="is_participant">
+    <div class="profile-projects">
+      <app-content-bloc-editable
+        [initialItems]="event_data.projects"
+        [initialTags]="[]"
+        [additional_event_parameters]="event_slug"
+      ></app-content-bloc-editable>
+    </div>
+  </div>
+</div>

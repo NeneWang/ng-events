@@ -39,18 +39,10 @@
             {{ item.description | wordLimit : 20 }}
           </p>
         </mat-card-content>
-        <!-- <mat-card-actions>
-          <button mat-icon-button (click)="editItem(item)">
-            <mat-icon>edit</mat-icon>
-          </button>
-          <button mat-icon-button color="warn" (click)="deleteItem(item)">
-            <mat-icon>delete</mat-icon>
-          </button>
-        </mat-card-actions> -->
       </mat-card>
     </div>
 
-    <mat-card class="item" [routerLink]="['/publish-artwork']">
+    <mat-card class="item" [routerLink]="['/publish-artwork', additional_event_parameters]">
       <mat-card-content>
         <h3>Create Artwork</h3>
         <mat-chip-set aria-label="Fish selection"></mat-chip-set>

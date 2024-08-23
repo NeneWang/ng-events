@@ -28,6 +28,7 @@ interface Item {
 export class ContentBlocComponent implements OnChanges {
   @Input() initialItems: Item[] = [];
   @Input() initialTags: string[] = [];
+  
 
   selectedTags: string[] = [];
   filteredTags: string[] = [];

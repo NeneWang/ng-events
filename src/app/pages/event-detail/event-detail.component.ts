@@ -68,5 +68,9 @@ export class EventDetailComponent {
     });
   }
 
+  // onsubmitWork(): void {
+    
+  // }
+
 
 }

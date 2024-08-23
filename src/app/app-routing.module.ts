@@ -66,6 +66,9 @@ const routes: Routes = [
     path: 'publish-artwork', component: PublishArtworkComponent
   },
   {
+    path: 'publish-artwork/:slug', component: PublishArtworkComponent
+  },
+  {
     path: 'publish-shrine', component: PublishShrineComponent
   },
   {
