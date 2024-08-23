@@ -67,7 +67,7 @@ export class PublishArtworkComponent implements OnInit {
     catch (e) {
       this.event_id = this.activatedRoute.snapshot.params['slug'];
     }
-    console.log('Event ID', this.event_id);
+    // console.log('Event ID', this.event_id);
   }
 
   ngOnInit(): void {

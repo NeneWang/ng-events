@@ -1,5 +1,5 @@
 import { ArtshowService } from './../../services/artshow.service';
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
@@ -24,73 +24,18 @@ export type ChartOptions = {
   plotOptions: ApexPlotOptions;
 };
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 const mockEventsData: any[] = [];
-/**
- * {
-      title: 'Landscape Painting',
-      slug: 'landscape-painting',
-      x: 'Landscape Painting',
-      y: [
-        new Date('2024-01-15').getTime(),
-        new Date('2024-01-20').getTime()
-      ],
-      fillColor: '#008FFB',
-      img: ""
-    },
-    {
-      title: 'Abstract Art',
-      slug: 'abstract-art',
-      x: 'Abstract Art',
-      y: [
-        new Date('2024-02-05').getTime(),
-        new Date('2024-02-10').getTime()
-      ],
-      fillColor: '#00E396',
-      img: ""
-
-    },
-    {
-      title: 'Sculpture Exhibition',
-      slug: 'sculpture-exhibition',
-      x: 'Sculpture Exhibition',
-      y: [
-        new Date('2024-03-01').getTime(),
-        new Date('2024-03-05').getTime()
-      ],
-      fillColor: '#775DD0',
-      img: ""
-    },
-    {
-      title: 'Digital Art Show',
-      slug: 'digital-art-show',
-      x: 'Digital Art Show',
-      y: [
-        new Date('2024-03-10').getTime(),
-        new Date('2024-03-15').getTime()
-      ],
-      fillColor: '#FEB019',
-      img: ""
-    },
-    {
-      title: 'Photography Exhibition',
-      slug: 'photography-exhibition',
-      x: 'Photography Exhibition',
-      y: [
-        new Date('2024-04-01').getTime(),
-        new Date('2024-04-07').getTime()
-      ],
-      fillColor: '#FF4560',
-      img: ""
-    }
- */
 @Component({
   selector: 'app-events-screen',
   templateUrl: './events-screen.component.html',
   styleUrls: ['./events-screen.component.scss']
 })
 export class EventsScreenComponent {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public chartOptions: any;
   public events = mockEventsData;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   public events_calendar: any[] = [];
   public fillcolors = ['#008FFB', '#00E396', '#775DD0', '#FEB019', '#FF4560'];
 
@@ -101,12 +46,15 @@ export class EventsScreenComponent {
 
   constructor(artshowService: ArtshowService, private router: Router) {
 
-    const _events = artshowService.getEvents().subscribe((events: any) => {
+    
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    artshowService.getEvents().subscribe((events: any) => {
       // console.log('Events Data', this.events);
       this.events = events;
       // console.log('Events', this.events);
 
       // Date has to be converted to timestamp
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       this.events_calendar = this.events.map((event: any) => {
         return {
           title: event.title,
@@ -141,6 +89,7 @@ export class EventsScreenComponent {
         },
         dataLabels: {
           enabled: true,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
           formatter: function (val: [number, number], opts: { w: { globals: { labels: { [x: string]: any } } }; dataPointIndex: number }) {
             const label = opts.w.globals.labels[opts.dataPointIndex];
             const a = new Date(val[0]);
@@ -169,6 +118,7 @@ export class EventsScreenComponent {
 
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onEventClick(event: any, slug: string) {
     // console.log(event, slug); // You can remove this line if you don't need to log the event
     this.router.navigate(['/event', slug]);

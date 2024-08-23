@@ -8,6 +8,7 @@ import { ArtshowService } from 'src/app/services/artshow.service';
   styleUrls: ['./profile.component.scss']
 })
 export class ProfileComponent implements OnInit {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   profile: any;
   user_slug: string;
   profiles = [

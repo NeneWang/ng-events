@@ -21,6 +21,7 @@ export class HostComponent {
   image_link = '';
 
   showOtherField = false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   http: any;
   account_email = '';
   upload_succeeded = false;
@@ -57,10 +58,12 @@ export class HostComponent {
       this.authService.logout();
       this.router.navigate(['/auth/login']);
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.account_email = localStorage.getItem('email')!;
     }
   }
 
+  // eslint-disable-next-line @angular-eslint/use-lifecycle-interface
   ngOnInit(): void {
     this.form.get('mediums.other')?.valueChanges.subscribe((value) => {
       this.showOtherField = value;
@@ -70,6 +73,7 @@ export class HostComponent {
     });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   upload(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -79,11 +83,13 @@ export class HostComponent {
     });
 
     return this.http.request(req).pipe(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       map((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
             return {
               status: 'progress',
+              // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
               message: Math.round((100 * event.loaded) / event.total!),
             };
           case HttpEventType.Response:
@@ -110,13 +116,14 @@ export class HostComponent {
     this.upload_succeeded = false;
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onOtherChange(event: any): void {
     this.showOtherField = event.checked;
     if (!event.checked) {
       this.form.get('otherMedium')?.reset();
     }
   }
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
     this.onUpload();
@@ -164,6 +171,7 @@ export class HostComponent {
   onUpload(): void {
     if (this.selectedFile) {
       this.artshowService.upload(this.selectedFile).subscribe(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (event: any) => {
           if (event.status === 'progress') {
             this.uploadProgress = event.message;
@@ -177,6 +185,7 @@ export class HostComponent {
             }
           }
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error: any) => {
           this.uploadMessage = 'File upload failed!';
           console.error(error);

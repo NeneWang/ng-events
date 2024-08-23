@@ -1,3 +1,5 @@
+// eslint-disable @typescript-eslint/no-explicit-any
+
 import { HttpClient, HttpEvent, HttpEventType, HttpRequest } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { map, Observable } from 'rxjs';
@@ -55,6 +57,7 @@ export class ArtshowService {
 
   constructor(private http: HttpClient) { }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   upload(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -65,9 +68,11 @@ export class ArtshowService {
     });
 
     return this.http.request(req).pipe(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       map((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             return { status: 'progress', message: Math.round((100 * event.loaded) / event.total!) };
           case HttpEventType.Response:
             return event.body;
@@ -78,21 +83,19 @@ export class ArtshowService {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   publishArtwork(artwork: Artwork): Observable<any> {
-    // if (event_slug && event_slug !== '') {
-    //   return this.http.post(environment.baseUrl + '/artwork?event_slug=' + event_slug, artwork);
-    // } else {
-
-    // }
     return this.http.post(environment.baseUrl + '/artwork', artwork);
   }
 
 
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getExploreArtworks(): Observable<any> {
     return this.http.get(environment.baseUrl + '/artwork');
   }
 
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getArtwork(slug: string, email: string | undefined): Observable<any> {
     if (email) {
       // So it returns if there is the permission for using it or not.
@@ -101,20 +104,24 @@ export class ArtshowService {
     return this.http.get(environment.baseUrl + '/artwork/' + slug);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toggleFavorite(slug: string, email: string): Observable<any> {
 
     // return this.http.get(environment.baseUrl + '/toggle_avorite', { artwork_slug: slug, user_email: email });
     return this.http.get(environment.baseUrl + '/toggle_favorite?artwork_slug=' + slug + '&user_email=' + email);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   createTag(tag: string): Observable<any> {
     return this.http.post(environment.baseUrl + '/tag', { tag: tag });
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getEvents(): Observable<any> {
     return this.http.get(environment.baseUrl + '/events');
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getEventDetails(slug: string, email: string): Observable<any> {
     return this.http.get(environment.baseUrl + '/event/' + slug + '?user_email=' + email);
   }
@@ -123,24 +130,28 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/event', event);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getFavoritedArtworks(email: string): Observable<any> {
     return this.http.get(environment.baseUrl + '/favorites?user_email=' + email);
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getProfileByEmail(email: string): Observable<any> {
     return this.http.get(environment.baseUrl + `/profile?email=${email}`)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   getProfileBySlug(slug_name: string): Observable<any> {
     return this.http.get(environment.baseUrl + `/profile/${slug_name}`)
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   deleteWorkBySlug(slug: string): Observable<any> {
     return this.http.delete(environment.baseUrl + `/work/${slug}`)
 
   }
 
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   saveWorkUpdates(slug: string, model_data: any): Observable<any> {
     console.log("Calling ", environment.baseUrl, 'With Slug', slug, 'Model', model_data)
     return this.http.patch(environment.baseUrl + '/work/' + slug, model_data);
@@ -148,10 +159,7 @@ export class ArtshowService {
   }
 
 
-  //   // 
-  // @router.post('/event/join/{slug}')
-  // async def join_event(competitionslug: str, user_email: str):
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   toggleJoinEvent(slug: string, email: string): Observable<any> {
     return this.http.get(environment.baseUrl + '/event/join/' + slug + '?user_email=' + email);
   }

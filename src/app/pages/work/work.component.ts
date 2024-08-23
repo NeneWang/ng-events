@@ -1,5 +1,5 @@
 import { AuthService } from './../../services/auth.service';
-import { Component, inject, OnInit } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ArtshowService } from 'src/app/services/artshow.service';
 import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
@@ -13,6 +13,7 @@ import { MatSnackBar, MatSnackBarConfig } from '@angular/material/snack-bar';
 })
 export class WorkComponent {
   private _snackBar = inject(MatSnackBar);
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   work: any;
   isFavorited = false;
   user_email: string | undefined;
@@ -21,7 +22,7 @@ export class WorkComponent {
   is_author = false;
 
 
-  constructor(private route: ActivatedRoute, private router: Router, private artshowService: ArtshowService, private AuthService: AuthService) {
+  constructor(private route: ActivatedRoute, private router: Router, private artshowService: ArtshowService, private AuthService: AuthService, private activatedRoute: ActivatedRoute) {
     this.user_email = this.AuthService.getUserEmail();
     this.slug = route.snapshot.params['slug'];
 
@@ -37,17 +38,29 @@ export class WorkComponent {
   }
 
 
+  openSnackBar(message: string, action: string) {
+    const config = new MatSnackBarConfig();
+    config.verticalPosition = 'top';
+    config.horizontalPosition = 'center';
+    config.panelClass = ['custom-snackbar'];
+
+    this._snackBar.open(message, action, config);
+  }
+
+
   favoriteWork(): void {
     const useremail = this.AuthService.getUserEmail();
     const artwork_slug = this.work.slug;
 
     this.isFavorited = !this.isFavorited;
     this.artshowService.toggleFavorite(artwork_slug, useremail ?? '').subscribe({
-      next: (response) => {
+      next: () => {
         // console.log('Favorite successful', response);
+        this.openSnackBar('Favorite successful', 'close')
       },
-      error: (err) => {
+      error: () => {
         // console.error('Error favoriting work', err);
+        this.openSnackBar('Error favoriting work', 'close')
       },
     });
 
@@ -64,7 +77,7 @@ export class WorkComponent {
 
   onDelete(): void {
     this.artshowService.deleteWorkBySlug(this.slug).subscribe({
-      next: (response) => {
+      next: () => {
         this._snackBar.open('Deleted successfully', 'close')
         this.router.navigate(['/profile'])
       }
@@ -76,7 +89,7 @@ export class WorkComponent {
 
     this.artshowService.saveWorkUpdates(this.slug, this.work).subscribe(
       {
-        next: (_) => {
+        next: () => {
           console.log('update success.')
         }
       }
