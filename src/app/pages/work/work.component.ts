@@ -18,6 +18,7 @@ export class WorkComponent {
   user_email: string | undefined;
   slug: string;
   edit_work = false;
+  is_author = false;
 
 
   constructor(private route: ActivatedRoute, private router: Router, private artshowService: ArtshowService, private AuthService: AuthService) {
@@ -29,6 +30,7 @@ export class WorkComponent {
       this.work = data;
       console.log('Work data', this.work);
       this.isFavorited = this.work?.favorite ?? false;
+      this.is_author = this.work?.is_author ?? false;
 
     });
 

@@ -10,19 +10,18 @@ import { AuthService } from 'src/app/services/auth.service';
 })
 export class EventDetailComponent {
   event_data = {
-    title: 'Abstract Art',
-    description: 'A showcase of abstract art from around the world.',
-    date: '2024-02-05',
-    location: 'New York, NY',
+    title: '...',
+    description: '....',
+    date: '...',
+    location: '...',
     image: 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png',
-    tags: ['Art', 'Abstract', 'Exhibition'],
-    creator: 'Creator A',
-    creator_slug: 'creator-a',
+    tags: [] as string[],
+    creator: '...',
+    creator_slug: '...',
     significant_views: 120,
     projects: [],
     is_participant: false,
     submitted_count: 0
-
   }
 
   event_slug: string;
@@ -42,7 +41,7 @@ export class EventDetailComponent {
       is_participant: boolean, submitted_count: number
      }) => {
       this.event_data = data;
-      console.log('Event data', this.event_data);
+      // console.log('Event data', this.event_data);
       this.is_participant = this.event_data.is_participant;
 
     });

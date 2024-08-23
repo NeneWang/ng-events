@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Component, inject, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
@@ -20,6 +20,7 @@ export class PublishArtworkComponent implements OnInit {
   uploadProgress = 0;
   uploadMessage = '';
   submission_link = '';
+  event_id = 0;
 
   showOtherField = false;
   http: any;
@@ -48,14 +49,23 @@ export class PublishArtworkComponent implements OnInit {
   });
 
   // If not user logged in, redirect to login page
-  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private artshowService: ArtshowService) {
+  constructor(private authService: AuthService, private router: Router, private fb: FormBuilder, private artshowService: ArtshowService, private activatedRoute: ActivatedRoute) {
     if (!this.authService.isAuthenticatedUser()) {
       this.authService.logout();
       // Redirect
       this.router.navigate(['/auth/login']);
+      
     } else {
       this.account_email = localStorage.getItem('email')!;
     }
+    // Try convert it into a number
+    try{
+      this.event_id = parseInt(this.activatedRoute.snapshot.params['slug']);
+    }
+    catch (e) {
+      this.event_id = this.activatedRoute.snapshot.params['slug'];
+    }
+    console.log('Event ID', this.event_id);
   }
 
   ngOnInit(): void {
@@ -114,13 +124,16 @@ export class PublishArtworkComponent implements OnInit {
       // console.log("Submitting the form:")
       // console.log(this.form.value);
       const submissionContent = this.form.value;
+      submissionContent.event_id = this.event_id ?? 0;
       submissionContent.account_email = localStorage.getItem('email') || '';
-      console.log("whats going on with the submission link?", this.form.value);
+      // console.log("whats going on with the submission link?", this.form.value);
+
 
       this.artshowService.publishArtwork(submissionContent).subscribe({
         next: (response) => {
           console.log('Artwork published', response);
-          this.router.navigate(['/']);
+          // this.router.navigate(['/']);
+          this.upload_succeeded = true;
           this.openSnackBar("Artwork Published", 'Close')
         },
         error: (error) => {

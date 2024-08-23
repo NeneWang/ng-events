@@ -79,6 +79,11 @@ export class ArtshowService {
   }
 
   publishArtwork(artwork: Artwork): Observable<any> {
+    // if (event_slug && event_slug !== '') {
+    //   return this.http.post(environment.baseUrl + '/artwork?event_slug=' + event_slug, artwork);
+    // } else {
+
+    // }
     return this.http.post(environment.baseUrl + '/artwork', artwork);
   }
 

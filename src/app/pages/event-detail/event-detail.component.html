@@ -3,6 +3,9 @@
     <span *ngIf="!is_participant">Join <i class="heart-icon">&#9825;</i></span>
     <span *ngIf="is_participant">Leave </span>
   </button>
+  <div *ngIf="is_participant">
+    <!-- Create work and also  -->
+  </div>
 </div>
 <div *ngIf="event_data" class="profile-container">
   <div class="profile-header">

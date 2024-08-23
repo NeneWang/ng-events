@@ -124,9 +124,14 @@
   <p *ngIf="form.get('submission_link')?.value">
     Additional Forms: {{ form.get("submission_link")?.value }}
   </p>
-  <p>Mediums: {{ form.get("mediums")?.value?.join(", ") }}</p>
-
+  <p>{{ form.get("submission_link")?.value }}</p>
+  <!-- <div *ngIf="form.get('image')"> -->
+  <!-- <img [src]="form.get('image')?.value" alt="Artwork" /> -->
+  <!-- </div> -->
   <br />
   <br />
-  <button routerLink="/event">Go to Events Page</button>
+  <div *ngIf="event_id">
+    <button routerLink="/event/{{ event_id }}">View Event</button>
+  </div>
+  <button routerLink="/">Home</button>
 </div>
