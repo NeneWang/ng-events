@@ -2,6 +2,10 @@
   <form [formGroup]="form">
     <div>
       <br />
+      <div *ngIf="event_id !== 0" >
+        <h3>Artwork for Event: {{ event_id }}</h3>
+        <br>
+      </div>
       <mat-form-field appearance="outline" class="mid-width">
         <mat-label>Title of Work</mat-label>
         <input

@@ -8,7 +8,7 @@
   </button>
   <div *ngIf="is_participant">
     <button class="btn-action">Sign Up Form</button> &nbsp;
-    <button class="btn-action">Create Artwork</button>&nbsp;
+    <button class="btn-action" [routerLink]="['/publish-artwork', event_slug]">Create Artwork</button>&nbsp;
     <button class="btn-action" (click)="togglejoinEvent()">Leave</button> 
   </div>
 </div>

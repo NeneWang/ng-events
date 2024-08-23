@@ -23,6 +23,7 @@ export class PublishArtworkComponent implements OnInit {
   event_id = 0;
 
   showOtherField = false;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   http: any;
   account_email = "";
   post_file_url = environment.baseUrl + '/upload';
@@ -56,6 +57,7 @@ export class PublishArtworkComponent implements OnInit {
       this.router.navigate(['/auth/login']);
       
     } else {
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
       this.account_email = localStorage.getItem('email')!;
     }
     // Try convert it into a number
@@ -76,7 +78,7 @@ export class PublishArtworkComponent implements OnInit {
     });
   }
 
-
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   upload(file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
@@ -86,9 +88,11 @@ export class PublishArtworkComponent implements OnInit {
     });
 
     return this.http.request(req).pipe(
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
       map((event: HttpEvent<any>) => {
         switch (event.type) {
           case HttpEventType.UploadProgress:
+            // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
             return { status: 'progress', message: Math.round((100 * event.loaded) / event.total!) };
           case HttpEventType.Response:
             return event.body;
@@ -99,11 +103,13 @@ export class PublishArtworkComponent implements OnInit {
     );
   }
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onOtherChange(event: any): void {
     this.showOtherField = event.checked;
   }
 
 
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   onFileSelected(event: any): void {
     this.selectedFile = event.target.files[0];
     this.onUpload()
@@ -149,6 +155,7 @@ export class PublishArtworkComponent implements OnInit {
   onUpload(): void {
     if (this.selectedFile) {
       this.artshowService.upload(this.selectedFile).subscribe(
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (event: any) => {
           if (event.status === 'progress') {
             this.uploadProgress = event.message;
@@ -164,6 +171,7 @@ export class PublishArtworkComponent implements OnInit {
             }
           }
         },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
         (error: any) => {
           this.uploadMessage = 'File upload failed!';
           console.error(error);
