@@ -1,1 +1,43 @@
-<p>publish-shrine works!</p>
+<div *ngIf="!upload_succeeded">
+    <form [formGroup]="form">
+      <div>
+        <br />
+        <mat-form-field appearance="outline" class="mid-width">
+          <mat-label>Title of Shrine</mat-label>
+          <input formControlName="title" matInput type="text" class="input-height" />
+          <mat-error *ngIf="form.get('title')?.hasError('required')">
+            Title is required
+          </mat-error>
+        </mat-form-field>
+  
+        <br />
+        <br />
+  
+        <div>
+          <mat-label>Include Link</mat-label>
+          <br />
+          <input
+            matInput
+            class="full-width"
+            type="text"
+            formControlName="root_link"
+          />
+        </div>
+  
+        <br />
+        <button type="button" (click)="submit()" >Submit</button>
+      </div>
+    </form>
+  </div>
+  
+  <div *ngIf="upload_succeeded">
+    
+    <p>Title: {{ form.get('title')?.value }}</p>
+    
+    
+  
+    <br />
+    <br>
+    <button routerLink="/event">Go to Events Page</button>
+  </div>
+  

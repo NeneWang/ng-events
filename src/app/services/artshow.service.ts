@@ -164,6 +164,10 @@ export class ArtshowService {
     return this.http.get(environment.baseUrl + '/event/join/' + slug + '?user_email=' + email);
   }
 
+  publishShrine(shrine: any): Observable<any> {
+    return this.http.post(environment.baseUrl + '/shrine', shrine);
+  }
+
 
 
 
