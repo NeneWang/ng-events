@@ -1,10 +1,15 @@
 <div class="button-container">
-  <button class="btn-action" (click)="togglejoinEvent()">
-    <span *ngIf="!is_participant">Join <i class="heart-icon">&#9825;</i></span>
-    <span *ngIf="is_participant">Leave </span>
+  <button
+    *ngIf="!is_participant"
+    class="btn-action"
+    (click)="togglejoinEvent()"
+  >
+    Join <i class="heart-icon">&#9825;</i>
   </button>
   <div *ngIf="is_participant">
-    <!-- Create work and also  -->
+    <button class="btn-action">Sign Up Form</button> &nbsp;
+    <button class="btn-action">Create Artwork</button>&nbsp;
+    <button class="btn-action" (click)="togglejoinEvent()">Leave</button> 
   </div>
 </div>
 <div *ngIf="event_data" class="profile-container">
