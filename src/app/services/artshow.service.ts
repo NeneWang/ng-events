@@ -21,7 +21,7 @@ interface Artwork {
   text_content_location: string;
 }
 
-interface Event{
+interface Event {
   /**
     title: str
     creator: str
@@ -82,14 +82,14 @@ export class ArtshowService {
     return this.http.post(environment.baseUrl + '/artwork', artwork);
   }
 
-  
+
 
   getExploreArtworks(): Observable<any> {
     return this.http.get(environment.baseUrl + '/artwork');
   }
 
-  getArtwork(slug: string, email:string | undefined): Observable<any> {
-    if (email){
+  getArtwork(slug: string, email: string | undefined): Observable<any> {
+    if (email) {
       // So it returns if there is the permission for using it or not.
       return this.http.get(environment.baseUrl + '/artwork/' + slug + '?user_email=' + email);
     }
@@ -97,7 +97,7 @@ export class ArtshowService {
   }
 
   toggleFavorite(slug: string, email: string): Observable<any> {
-    
+
     // return this.http.get(environment.baseUrl + '/toggle_avorite', { artwork_slug: slug, user_email: email });
     return this.http.get(environment.baseUrl + '/toggle_favorite?artwork_slug=' + slug + '&user_email=' + email);
   }
@@ -105,9 +105,13 @@ export class ArtshowService {
   createTag(tag: string): Observable<any> {
     return this.http.post(environment.baseUrl + '/tag', { tag: tag });
   }
-  
+
   getEvents(): Observable<any> {
     return this.http.get(environment.baseUrl + '/events');
+  }
+
+  getEventDetails(slug: string, email: string): Observable<any> {
+    return this.http.get(environment.baseUrl + '/event/' + slug + '?user_email=' + email);
   }
 
   createEvent(event: Event): Observable<unknown> {
@@ -118,25 +122,39 @@ export class ArtshowService {
     return this.http.get(environment.baseUrl + '/favorites?user_email=' + email);
   }
 
-  getProfileByEmail(email: string): Observable<any>{
+  getProfileByEmail(email: string): Observable<any> {
     return this.http.get(environment.baseUrl + `/profile?email=${email}`)
   }
 
-  getProfileBySlug(slug_name: string): Observable<any>{
+  getProfileBySlug(slug_name: string): Observable<any> {
     return this.http.get(environment.baseUrl + `/profile/${slug_name}`)
   }
 
-  deleteWorkBySlug(slug: string): Observable<any>{
+  deleteWorkBySlug(slug: string): Observable<any> {
     return this.http.delete(environment.baseUrl + `/work/${slug}`)
 
   }
 
 
-  
+  saveWorkUpdates(slug: string, model_data: any): Observable<any> {
+    console.log("Calling ", environment.baseUrl, 'With Slug', slug, 'Model', model_data)
+    return this.http.patch(environment.baseUrl + '/work/' + slug, model_data);
+
+  }
+
+
+  //   // 
+  // @router.post('/event/join/{slug}')
+  // async def join_event(competitionslug: str, user_email: str):
+
+  toggleJoinEvent(slug: string, email: string): Observable<any> {
+    return this.http.post(environment.baseUrl + '/event/join/' + slug, { user_email: email });
+  }
 
 
 
-  
 
-  
+
+
+
 }

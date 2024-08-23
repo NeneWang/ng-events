@@ -9,31 +9,33 @@
 </p>
 
 <div class="events-cards">
-  <div class="event-card" *ngFor="let event of events">
-    <mat-card>
-      <div class="card-content">
-        <img
-          alt="{{event.y[0]}}"
-          mat-card-image
-          class="card-image"
-          
-          [src]="event.img ? event.img : 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png'" 
-          
-          />
-        <div class="card-text">
-          <mat-card-title class="card-title">{{ event.title }}</mat-card-title>
-          <p class="card-description">
-            Starts {{ event.y[0] | date }}
-            <br />
-            Ends {{ event.y[1] | date }}
-          </p>
+  <div class="event-card" *ngFor="let event of events" >
+    <a [routerLink]="['/event', event.slug]">
 
-          <mat-card-content class="card-description"
+
+      <mat-card >
+        <div class="card-content">
+          <img
+            alt="{{event.y[0]}}"
+            mat-card-image
+            class="card-image "
+            [src]="event.img ? event.img : 'https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png'"           
+          />
+          <div class="card-text">
+            <mat-card-title class="card-title">{{ event.title }}</mat-card-title>
+            <p class="card-description">
+              Starts {{ event.y[0] | date }}
+              <br />
+              Ends {{ event.y[1] | date }}
+            </p>
+            
+            <mat-card-content class="card-description"
             >description</mat-card-content
-          >
+            >
+          </div>
         </div>
-      </div>
-    </mat-card>
+      </mat-card>
+    </a>
   </div>
 </div>
 

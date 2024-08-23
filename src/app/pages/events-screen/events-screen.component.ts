@@ -1,5 +1,6 @@
 import { ArtshowService } from './../../services/artshow.service';
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import {
   ApexAxisChartSeries,
   ApexChart,
@@ -26,6 +27,7 @@ export type ChartOptions = {
 const mockEventsData = [
   {
     title: 'Landscape Painting',
+    slug: 'landscape-painting',
     x: 'Landscape Painting',
     y: [
       new Date('2024-01-15').getTime(),
@@ -36,6 +38,7 @@ const mockEventsData = [
   },
   {
     title: 'Abstract Art',
+    slug: 'abstract-art',
     x: 'Abstract Art',
     y: [
       new Date('2024-02-05').getTime(),
@@ -47,6 +50,7 @@ const mockEventsData = [
   },
   {
     title: 'Sculpture Exhibition',
+    slug: 'sculpture-exhibition',
     x: 'Sculpture Exhibition',
     y: [
       new Date('2024-03-01').getTime(),
@@ -57,6 +61,7 @@ const mockEventsData = [
   },
   {
     title: 'Digital Art Show',
+    slug: 'digital-art-show',
     x: 'Digital Art Show',
     y: [
       new Date('2024-03-10').getTime(),
@@ -67,6 +72,7 @@ const mockEventsData = [
   },
   {
     title: 'Photography Exhibition',
+    slug: 'photography-exhibition',
     x: 'Photography Exhibition',
     y: [
       new Date('2024-04-01').getTime(),
@@ -86,7 +92,7 @@ export class EventsScreenComponent {
   public chartOptions: any;
   public events = mockEventsData;
 
-  constructor(artshowService: ArtshowService) {
+  constructor(artshowService: ArtshowService, private router: Router) {
     this.chartOptions = {
       series: [
         {
@@ -133,18 +139,22 @@ export class EventsScreenComponent {
       }
     };
 
-    const _events  = artshowService.getEvents().subscribe((events: any) => {
+    const _events = artshowService.getEvents().subscribe((events: any) => {
       console.log('Events Data', this.events);
       this.events = events;
       console.log('Events', this.events);
     });
 
     console.log('Raw Hardcoded Events', this.events);
-    
-
-
 
   }
+
+  onEventClick(event: any, slug: string) {
+    console.log(event, slug); // You can remove this line if you don't need to log the event
+    this.router.navigate(['/event', slug]);
+  }
+
+
   // ngOnInit(): void {
   //   throw new Error('Method not implemented.');
   // }

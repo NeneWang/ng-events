@@ -67,38 +67,5 @@ export class ProfileComponent implements OnInit {
       // console.log('profile', this.profile)
     })
 
-    // this.profile = {
-    //   "username": "nelson2wang",
-    //   "name": "Nelson Wang",
-    //   "description": null,
-    //   "social": [],
-    //   "tags": [],
-    //   "projects": [
-    //     {
-    //       "slug": "artwork-2-4",
-    //       "creator": "nelson2wang",
-    //       "creator_slug": "nelson2wang",
-    //       "title": "Artwork 2",
-    //       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
-    //       "description": "artist statement.",
-    //       "tags": [],
-    //       "date": "2024-08-09T18:57:50.181149",
-    //       "significant_views": 0,
-    //       "favorite": false
-    //     },
-    //     {
-    //       "slug": "artwork-1-2",
-    //       "creator": "nelson2wang",
-    //       "creator_slug": "nelson2wang",
-    //       "title": "Artwork 1\n",
-    //       "image": "https://vt-vtwa-assets.varsitytutors.com/vt-vtwa/uploads/problem_question_image/image/1346/Cube__PSF_.png",
-    //       "description": "asdasdsa",
-    //       "tags": [],
-    //       "date": "2024-08-08T18:26:26.855308",
-    //       "significant_views": 0,
-    //       "favorite": false
-    //     }
-    //   ]
-    // }
   }
 }

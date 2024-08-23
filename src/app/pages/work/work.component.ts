@@ -18,17 +18,17 @@ export class WorkComponent {
   user_email: string | undefined;
   slug: string;
   edit_work = false;
-  
+
 
   constructor(private route: ActivatedRoute, private router: Router, private artshowService: ArtshowService, private AuthService: AuthService) {
     this.user_email = this.AuthService.getUserEmail();
     this.slug = route.snapshot.params['slug'];
-    
+
     const workData = this.artshowService.getArtwork(this.slug, this.user_email);
     workData.subscribe((data) => {
       this.work = data;
       console.log('Work data', this.work);
-      this.isFavorited = this.work?.favorite?? false;
+      this.isFavorited = this.work?.favorite ?? false;
 
     });
 
@@ -40,7 +40,7 @@ export class WorkComponent {
     const artwork_slug = this.work.slug;
 
     this.isFavorited = !this.isFavorited;
-    this.artshowService.toggleFavorite(artwork_slug, useremail?? '').subscribe({
+    this.artshowService.toggleFavorite(artwork_slug, useremail ?? '').subscribe({
       next: (response) => {
         // console.log('Favorite successful', response);
       },
@@ -52,17 +52,35 @@ export class WorkComponent {
   }
 
 
-  toggleEdit(): void{
+  toggleEdit(): void {
     this.edit_work = !this.edit_work;
+    if (!this.edit_work) {
+      // Going back to positive main menu then save any changes.
+      this.saveUpdates()
+    }
   }
 
-  onDelete(): void{
+  onDelete(): void {
     this.artshowService.deleteWorkBySlug(this.slug).subscribe({
       next: (response) => {
         this._snackBar.open('Deleted successfully', 'close')
         this.router.navigate(['/profile'])
       }
     });
+  }
+
+
+  saveUpdates(): void {
+
+    this.artshowService.saveWorkUpdates(this.slug, this.work).subscribe(
+      {
+        next: (_) => {
+          console.log('update success.')
+        }
+      }
+    )
+
+
   }
 
 }
